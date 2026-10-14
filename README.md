@@ -1,4 +1,4 @@
-# my-learning
+# my-learnings
 
 Everything I'm learning, practising and planning, in one place.
 

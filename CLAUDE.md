@@ -1,4 +1,4 @@
-# my-learning
+# my-learnings
 
 Personal learning repo for a full stack engineer (React, Angular, Node.js, Java) moving toward a Forward Deployed Engineer role.
 
