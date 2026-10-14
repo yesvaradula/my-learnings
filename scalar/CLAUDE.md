@@ -33,11 +33,11 @@ Coverage: arrays/prefix/carry forward/subarrays strong (#1-11, 17-18, 23, 28-31)
 
 | Day | Focus |
 |-----|-------|
-| Oct 14 (9 pm) | 2D arrays: traversal, spiral, rotate 90° in place |
-| Oct 15 | Bit manipulation: check/set/clear bit, count set bits, power of 2, single number |
-| Oct 16 | Prefix sum, carry forward, subarrays: re-solve 5-6 old ones from memory, out loud |
-| Oct 17 | Strings + timed mock (3 problems, 60 min, explained aloud) |
-| Oct 18 | Light warm-up, sleep, interview 9:30 pm |
+| Oct 14 (Wed) | Scalar class 7-9:30 am, Cloud class 9:30 pm: no DSA slot. Optional 5-min traversal warm-up only |
+| Oct 15 (Thu) | Morning: 2D arrays (traversal, spiral, rotate 90° in place). Afternoon: bit manipulation (check/set/clear bit, count set bits, power of 2, single number) |
+| Oct 16 (Fri) | After Scalar class: prefix sum, carry forward, subarrays: re-solve 5-6 old ones from memory, out loud |
+| Oct 17 (Sat) | After Coding Ninjas (2 pm): strings + the real timed mock (3 problems, 60 min, explained aloud) |
+| Oct 18 (Sun) | Coding Ninjas 11-2. Light warm-up ~4-6 pm, no new topics, rest. Interview 9:30 pm |
 
 Interview script for every problem: restate, walk an example, brute force, improve, code, edge-case test loop, state TC & SC unprompted.
 
@@ -126,7 +126,7 @@ When a new problem is solved, add a file there and a row here.
 ## Session log
 
 Full log lives in `scalar/LOG.md` (read it only when you need history). Latest entry:
-- **Next (Oct 14, 9 pm, he committed to this time):** 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview. Recursion day postponed. Write the test loop **alone**, no exceptions.
+- **Next (Thu Oct 15, morning):** 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview; bit manipulation in the afternoon. He chose to skip tonight's slot (Wed has Cloud class at 9:30 pm). Recursion postponed. Write the test loop **alone**, no exceptions.
 
 ## Session tips
 - Start from the repo root (`D:\learnings\sc\dsa`) or from `scalar/`; both load this file.
