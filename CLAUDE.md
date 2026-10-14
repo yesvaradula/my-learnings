@@ -19,6 +19,7 @@ Personal learning repo for a full stack engineer (React, Angular, Node.js, Java)
 | `binary-cloud/` | Cloud notes (AWS / Azure / GCP) | add when used |
 | `ninjas/` | *(purpose not defined yet)* | add when used |
 | `plans/` | Roadmaps and goals | add when used |
+| `gita/` | Bhagavad Gita study notes and reflections | `gita/CLAUDE.md` |
 
 ## Rules
 - Topic details live in the folder's own `CLAUDE.md`; keep this file short.
