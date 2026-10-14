@@ -1,4 +1,4 @@
-class FindMissingNumber {
+class FirstMissingPositive {
     public static int findMissingNumber(int[] A) {
 
         int missingNumber = 0;
