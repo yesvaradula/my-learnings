@@ -1,0 +1,16 @@
+# Scalar session log
+
+Append one entry per session (newest last). Old file names refer to the pre-cleanup flat `tasks/` folder.
+
+- **Oct 4:** Arrays revision. Solved #1–4 (Kadane's, Dutch flag, rotate array, Trapping Rain Water both ways).
+- **Oct 5:** Worked through the contest problem list. Solved #5–11.
+- **Oct 6:** Missed (no session).
+- **Oct 7:** Contest 1, solved 1/4. Rested afterwards; shared missed problem 1 (XOR pairs) and got the approach.
+- **Oct 8:** Set up this file. Tired after office. Did warm-up #12 (merge strings alternately): correct first try, fixed the tests and TC/SC after review. XOR pairs moved to **Oct 9, first thing** (before Math + Recursion). The other two missed problems are still not shared.
+- **Oct 9–10:** No session logged (never explained). The planned Math + Recursion and Recursion + Hashing days were skipped.
+- **Oct 11:** Solved #13 (count intersecting intervals, open/closed ends) using his own 0.5-shift idea. All 15 tests passed, and TC/SC were correct (O(N²) / O(N)), but he checked the output by eye with no PASS/FAIL. Wrote up the old `tasks/` files as #14–38 and found bugs in 7 of them (⚠️ rows; the `.java` files are unchanged and left for him to fix). Skipped duplicates: `AddOneToNum` (#5), `BinaryString` (#6), `WaterTrap (2)` (#4, a one-pass version that's **wrong**, e.g. `[4,0,4,5,3,3]` → 6 instead of 4). Started XOR pairs. Planned Hashing + Sorting not done yet.
+- **Oct 12:** No session logged.
+- **Oct 13:** Contest 2 **postponed to Oct 21**; new 8-day plan above. **Solved XOR pairs** (slipped since Oct 9): first draft had correct logic but TC written as O(n²) (it's O(N·Q)), `int` overflow in `ones * (n - ones)` even with `long[]` (fixed by making `ones` a `long`), and one eyeballed test. Ended with a 5-case `expected` + PASS/FAIL loop and his own 100k overflow test. Still forgot to fill the SC comment.
+- **Oct 13–14 (late night):** Shared and **solved missed problem 2** (max decreasing subarray sum). He spotted the Kadane-style pattern himself and got TC/SC right first time, but repeated the `ans = 0` init bug (`[7]` → 0) and again tested only one case. He asked for the test loop twice; got a fill-in-the-blanks skeleton plus the data arrays, and wrote the `got`/`ok` lines himself. He also understood `A[j] & (1 << b)` (why `!= 0`, not `== 1`) and traced `13 & (1 << 2)` correctly.
+- **Oct 14 (morning):** Pushed the repo to GitHub (`yesvaradula/dsa`, public). Added an `expected` + PASS/FAIL loop to `CountIntervals.java` himself after some pushback ("we already have test cases"); copied my hint comment along with it. Solved **#39** (single element in sorted array, binary search). Good parity idea, but `s = m + 1` caused an infinite loop. He couldn't spot it from the hints and needed the full explanation. He reported a false failure on `[1,1,2,2,3]` (code was correct). He asked me to write the test cases for him, which is the **third time** he's asked for test scaffolding.
+- **Next (Oct 14, 9 pm, he committed to this time):** Recursion day (sum of digits → palindrome → fast power → subsets). Write the test loop **alone**, no exceptions.
