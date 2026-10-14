@@ -26,7 +26,22 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 
 **All of Contest 1 is now covered.**
 
-## Prep plan for Contest 2
+## Interview: DSA Fundamentals Mastery (Scaler mock)
+
+**Sun Oct 18, 9:30–11:00 pm.** Live coding with a real interviewer, Java, explain scenarios out loud. Topics: Strings, Arrays, Prefix sum, Carry forward, Array techniques/subarrays, Bit manipulation, 2D arrays. Recursion is **not** on the list.
+Coverage: arrays/prefix/carry forward/subarrays strong (#1-11, 17-18, 23, 28-31); strings decent (#12, 14, 21, 34, 35, 38); **bit manipulation thin** (only XOR pairs); **2D arrays gap** (spiral, rotate 90° not started).
+
+| Day | Focus |
+|-----|-------|
+| Oct 14 (9 pm) | 2D arrays: traversal, spiral, rotate 90° in place |
+| Oct 15 | Bit manipulation: check/set/clear bit, count set bits, power of 2, single number |
+| Oct 16 | Prefix sum, carry forward, subarrays: re-solve 5-6 old ones from memory, out loud |
+| Oct 17 | Strings + timed mock (3 problems, 60 min, explained aloud) |
+| Oct 18 | Light warm-up, sleep, interview 9:30 pm |
+
+Interview script for every problem: restate, walk an example, brute force, improve, code, edge-case test loop, state TC & SC unprompted.
+
+## Prep plan for Contest 2 (interview takes priority until Oct 18; recursion/hashing/sorting days slip)
 
 | Day | Focus |
 |-----|-------|
@@ -110,7 +125,7 @@ When a new problem is solved, add a file there and a row here.
 ## Session log
 
 Full log lives in `scalar/LOG.md` (read it only when you need history). Latest entry:
-- **Next (Oct 14, 9 pm, he committed to this time):** Recursion day (sum of digits → palindrome → fast power → subsets). Write the test loop **alone**, no exceptions.
+- **Next (Oct 14, 9 pm, he committed to this time):** 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview. Recursion day postponed. Write the test loop **alone**, no exceptions.
 
 ## Session tips
 - Start from the repo root (`D:\learnings\sc\dsa`) or from `scalar/`; both load this file.
@@ -121,4 +136,5 @@ Full log lives in `scalar/LOG.md` (read it only when you need history). Latest e
 1. Explain the task simply (strip the story), give examples, edge cases, and guiding questions; hints in levels, not full answers.
 2. User codes first; review like a strict judge (correctness, edge cases, overflow, TC & SC).
 3. After a provided/fixed solution: user rewrites it from memory.
-4. Contest tips: read 0/1-indexing and constraints, use `long` for big sums, move on after ~15 min stuck.
+4. Contest tips: read 0/1-indexing and constraints, use `long` for big sums, move on after ~15 min stuck.
+
