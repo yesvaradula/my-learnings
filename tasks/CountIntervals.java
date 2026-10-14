@@ -19,9 +19,20 @@ public class CountIntervals {
                 {{1,1,3}, {2,3,5}, {4,5,7}, {1,7,8}}               // 15. chain of touching ends
         };
 
-        for(int i = 0; i < tests.length; i++) {
-            System.out.print(calculateAns(tests[i]) + ", ");    
+        int[] expected = {2, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 6, 1, 1};
+
+        // for(int i = 0; i < tests.length; i++) {
+        //     System.out.print(calculateAns(tests[i]) + ", ");    
+        // }
+
+        for (int t = 0; t < tests.length; t++) {
+            int got = calculateAns(tests[t]);
+            boolean ok = got == expected[t];          // hint: it's an int now, not an array
+            System.out.println("Test " + (t + 1) + ": " + (ok ? "PASS" : "FAIL")
+                + "  got=" + got + "  expected=" + expected[t]);
         }
+
+        
     }
 
     static int calculateAns(int[][] A) {

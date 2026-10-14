@@ -18,7 +18,7 @@ Format: timed coding contests, usually 4 problems in 90 minutes.
 2. **Max sum of a strictly decreasing subarray (dishes)**: Kadane-style. Extend while `A[i] < A[i-1]`, else restart at `A[i]`. Init `ans = cur = A[0]`.
    Status: ✅ **SOLVED Oct 13–14** (7/7 PASS). TC O(n), SC O(1). Write-up: `problems/contest1-02-max-decreasing-subarray-sum.md`.
 3. **Count intersecting intervals (open/closed ends)**: this is practice problem **#13**, solved Oct 11 with his 0.5-shift idea (15/15 tests).
-   Status: ✅ **SOLVED** (confirmed Oct 14 that it was the contest problem). Write-up: `problems/13-count-intersecting-intervals.md`. `tasks/CountIntervals.java` still prints results by eye, with no PASS/FAIL.
+   Status: ✅ **SOLVED** (confirmed Oct 14 that it was the contest problem). Write-up: `problems/13-count-intersecting-intervals.md`. `tasks/CountIntervals.java` now has an `expected` array + PASS/FAIL loop (15/15, Oct 14).
 
 **All of Contest 1 is now covered.**
 
@@ -44,7 +44,7 @@ Format: timed coding contests, usually 4 problems in 90 minutes.
 ## Solved problems (with the key idea / gotcha)
 
 Full write-ups (problem, idea, final code, bugs hit, tests) live in `problems/`, one file per task:
-`01-` … `38-` for practice problems (⚠️ = bug found in the saved `tasks/` file; the write-up has the fix), `contest<N>-<k>-…` for missed contest problems.
+`01-` … `39-` for practice problems (⚠️ = bug found in the saved `tasks/` file; the write-up has the fix), `contest<N>-<k>-…` for missed contest problems.
 When a new problem is solved, add a file there and a row here.
 
 | # | Problem | Pattern | Remember |
@@ -87,6 +87,7 @@ When a new problem is solved, add a file there and a row here.
 | 36 | Multiples of 7 in range queries | Prefix count | Same as #8 with 0/1 flags. Don't overwrite the input. |
 | 37 | Special index (count) | Even/odd prefix sums | After deleting `i`, the suffix parity **flips**: even = `pfE[i-1] + (pfO[n-1] - pfO[i])`. |
 | 38 | Reverse a string | Two-pointer swap | `char[]`, swap while `i < j`. |
+| 39 | Single element in sorted array | Binary search on pair parity | Check edges first. Move `m` to the pair start; even → `s = m + 2` (**not** `m + 1`, infinite loop), odd → `e = m - 1`. O(log n). |
 
 ## Parked practice (not started yet)
 - **2D arrays:** spiral print, rotate matrix 90° in place
@@ -113,7 +114,8 @@ When a new problem is solved, add a file there and a row here.
 - **Oct 12:** No session logged.
 - **Oct 13:** Contest 2 **postponed to Oct 21**; new 8-day plan above. **Solved XOR pairs** (slipped since Oct 9): first draft had correct logic but TC written as O(n²) (it's O(N·Q)), `int` overflow in `ones * (n - ones)` even with `long[]` (fixed by making `ones` a `long`), and one eyeballed test. Ended with a 5-case `expected` + PASS/FAIL loop and his own 100k overflow test. Still forgot to fill the SC comment.
 - **Oct 13–14 (late night):** Shared and **solved missed problem 2** (max decreasing subarray sum). He spotted the Kadane-style pattern himself and got TC/SC right first time, but repeated the `ans = 0` init bug (`[7]` → 0) and again tested only one case. He asked for the test loop twice; got a fill-in-the-blanks skeleton plus the data arrays, and wrote the `got`/`ok` lines himself. He also understood `A[j] & (1 << b)` (why `!= 0`, not `== 1`) and traced `13 & (1 << 2)` correctly.
-- **Next (Oct 14):** Contest 1 fully reviewed (problem 3 = #13, already solved). Go straight to Recursion day. He should write the next test loop **without help**.
+- **Oct 14 (morning):** Pushed the repo to GitHub (`yesvaradula/dsa`, public). Added an `expected` + PASS/FAIL loop to `CountIntervals.java` himself after some pushback ("we already have test cases"); copied my hint comment along with it. Solved **#39** (single element in sorted array, binary search). Good parity idea, but `s = m + 1` caused an infinite loop. He couldn't spot it from the hints and needed the full explanation. He reported a false failure on `[1,1,2,2,3]` (code was correct). He asked me to write the test cases for him, which is the **third time** he's asked for test scaffolding.
+- **Next:** Recursion day (sum of digits → palindrome → fast power → subsets). Write the test loop **alone**, no exceptions.
 
 ## Session tips
 - Start sessions with plain `claude` from `D:\learnings\scaler\dsa` (this file loads automatically).
