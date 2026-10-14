@@ -63,7 +63,7 @@ Interview script for every problem: restate, walk an example, brute force, impro
 ## Solved problems (with the key idea / gotcha)
 
 Full write-ups (problem, idea, final code, bugs hit, tests) live in `scalar/problems/`, one file per task:
-`01-` … `39-` for practice problems (⚠️ = bug found in the saved `scalar/tasks/` file; the write-up has the fix), `contest<N>-<k>-…` for missed contest problems.
+`01-` … `40-` for practice problems (⚠️ = bug found in the saved `scalar/tasks/` file; the write-up has the fix), `contest<N>-<k>-…` for missed contest problems.
 When a new problem is solved, add a file there and a row here.
 
 | # | Problem | Pattern | Remember |
@@ -107,6 +107,7 @@ When a new problem is solved, add a file there and a row here.
 | 37 | Special index (count) | Even/odd prefix sums | After deleting `i`, the suffix parity **flips**: even = `pfE[i-1] + (pfO[n-1] - pfO[i])`. |
 | 38 | Reverse a string | Two-pointer swap | `char[]`, swap while `i < j`. |
 | 39 | Single element in sorted array | Binary search on pair parity | Check edges first. Move `m` to the pair start; even → `s = m + 2` (**not** `m + 1`, infinite loop), odd → `e = m - 1`. O(log n). |
+| 40 | GCD of strings (LC 1071) | Concat commutes + gcd of lengths | `s1+s2 == s2+s1` else `""`; answer = prefix of length `gcd(n, m)`. SC is O(n+m), not O(1). LeetCode needs `class Solution`. |
 
 ## Parked practice (not started yet)
 - **2D arrays:** spiral print, rotate matrix 90° in place
@@ -131,6 +132,7 @@ Full log lives in `scalar/LOG.md` (read it only when you need history). Latest e
 - Start from the repo root (`D:\learnings\sc\dsa`) or from `scalar/`; both load this file.
 - Use `claude -c` to continue the last conversation mid-problem, `claude -r` to pick an older one.
 - At the end of each session, update the solved table / habits here and **append** to `scalar/LOG.md`.
+- **Standing rule (Oct 14, from Sai):** by default, at the end of every conversation, or mid-way after each solved/explained task, do all of: add a `scalar/problems/NN-*.md` write-up, update this file (solved table, habits, session log), append to `LOG.md`, then commit and push to git. Don't wait to be asked.
 
 ## Review workflow
 1. Explain the task simply (strip the story), give examples, edge cases, and guiding questions; hints in levels, not full answers.
