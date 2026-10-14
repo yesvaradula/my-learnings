@@ -10,9 +10,9 @@ Personal learning repo for a full stack engineer (React, Angular, Node.js, Java)
 - **Cinema taste:** Suspense and thrillers.
 - **Weekly schedule (all times IST):**
   - **Scalar** (DSA, HLD, LLD, problem-solving skills): Mon / Wed / Fri, 7:00-9:30 am.
-  - **Coding Ninjas** (AI, LLMs, RAG, Agents): 11 am-2 pm (days not specified yet).
+  - **Coding Ninjas** (AI, LLMs, RAG, Agents): Sat / Sun only, 11:00 am-2:00 pm.
   - **Binary Cloud** (cloud technologies, his cloud course): Mon-Fri evenings, 9:30-11:00 pm.
-  - Plan study blocks around these; weekends and the gaps between classes are his free practice time.
+  - Plan study blocks around these; weekday gaps (2 pm-9:30 pm Mon-Fri, after 9:30 am on Tue/Thu) and weekend afternoons/evenings are his free practice time.
 - **Learning program:** this repo is his structured learning space (DSA in `scalar/`, plus full stack, cloud and plans). Tie lessons back to the FDE goal.
 
 ## Layout
