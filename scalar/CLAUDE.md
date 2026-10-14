@@ -131,7 +131,8 @@ When a new problem is solved, add a file there and a row here.
 Full log lives in `scalar/LOG.md` (read it only when you need history). Latest entry:
 - **Oct 14 (late night):** #41 max product of 3: his sliding-window attempt failed (skipped -1/0/1, `abs` lost signs); he was exhausted, so the solution was provided. Rewrite #41 from memory Thu as a warm-up.
 - **Oct 14–15 (past midnight, after Cloud class):** Solved **#42** local minima and **#43** peak element (binary search). Bugs were all at the edges: missing end checks, the `n == 2` guard, swapped mid formula (`s - (e+s)/2` → index -1), strict `>` where the problem says "not smaller". Wrote TC/SC unprompted on #43. Still **no PASS/FAIL loop** in either file (I tested them in scratch).
-- **Next (Thu Oct 15, morning):** #41 from memory (10 min), then 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview; bit manipulation in the afternoon. He chose to skip tonight's slot (Wed has Cloud class at 9:30 pm). Recursion postponed. Write the test loop **alone**, no exceptions.
+- **Oct 15 (~1 am):** Scaler **practice contest**: 2/4 in 25 min. Missed #41 (max product of 3, not rewritten yet) and one more; code + 4th statement to be shared Thu morning.
+- **Next (Thu Oct 15, morning):** review the 2 practice-contest solutions + the 4th problem, #41 from memory (10 min), then 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview; bit manipulation in the afternoon. He chose to skip tonight's slot (Wed has Cloud class at 9:30 pm). Recursion postponed. Write the test loop **alone**, no exceptions.
 
 ## Session tips
 - Start from the repo root (`D:\learnings\sc\dsa`) or from `scalar/`; both load this file.
