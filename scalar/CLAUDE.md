@@ -63,7 +63,7 @@ Interview script for every problem: restate, walk an example, brute force, impro
 ## Solved problems (with the key idea / gotcha)
 
 Full write-ups (problem, idea, final code, bugs hit, tests) live in `scalar/problems/`, one file per task:
-`01-` … `40-` for practice problems (⚠️ = bug found in the saved `scalar/tasks/` file; the write-up has the fix), `contest<N>-<k>-…` for missed contest problems.
+`01-` … `43-` for practice problems (⚠️ = bug found in the saved `scalar/tasks/` file; the write-up has the fix), `contest<N>-<k>-…` for missed contest problems.
 When a new problem is solved, add a file there and a row here.
 
 | # | Problem | Pattern | Remember |
@@ -109,6 +109,8 @@ When a new problem is solved, add a file there and a row here.
 | 39 | Single element in sorted array | Binary search on pair parity | Check edges first. Move `m` to the pair start; even → `s = m + 2` (**not** `m + 1`, infinite loop), odd → `e = m - 1`. O(log n). |
 | 40 | GCD of strings (LC 1071) | Concat commutes + gcd of lengths | `s1+s2 == s2+s1` else `""`; answer = prefix of length `gcd(n, m)`. SC is O(n+m), not O(1). LeetCode needs `class Solution`. |
 | 41 | Highest product of 3 numbers | Top-3 max + bottom-2 min, one pass | Answer = `max(max1*max2*max3, max1*min1*min2)`. Pick **any** 3, not a window. Multiply in `long`. Solution was provided (he was exhausted): rewrite from memory. |
+| 42 | Local minima (distinct) | Binary search, walk downhill | Check **both ends** first (covers `n == 2`), then search `[1, n-2]` so `m±1` stay in bounds. `m = s + (e - s) / 2`. |
+| 43 | Peak element (duplicates allowed) | Binary search, walk uphill | "Not smaller than" = `>=` in the peak test **and** both end checks. Move toward the strictly bigger neighbour. |
 
 ## Parked practice (not started yet)
 - **2D arrays:** spiral print, rotate matrix 90° in place
@@ -128,6 +130,7 @@ When a new problem is solved, add a file there and a row here.
 
 Full log lives in `scalar/LOG.md` (read it only when you need history). Latest entry:
 - **Oct 14 (late night):** #41 max product of 3: his sliding-window attempt failed (skipped -1/0/1, `abs` lost signs); he was exhausted, so the solution was provided. Rewrite #41 from memory Thu as a warm-up.
+- **Oct 14–15 (past midnight, after Cloud class):** Solved **#42** local minima and **#43** peak element (binary search). Bugs were all at the edges: missing end checks, the `n == 2` guard, swapped mid formula (`s - (e+s)/2` → index -1), strict `>` where the problem says "not smaller". Wrote TC/SC unprompted on #43. Still **no PASS/FAIL loop** in either file (I tested them in scratch).
 - **Next (Thu Oct 15, morning):** #41 from memory (10 min), then 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview; bit manipulation in the afternoon. He chose to skip tonight's slot (Wed has Cloud class at 9:30 pm). Recursion postponed. Write the test loop **alone**, no exceptions.
 
 ## Session tips
