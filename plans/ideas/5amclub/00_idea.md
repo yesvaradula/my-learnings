@@ -2,6 +2,9 @@
 
 Status: draft by Claude from a one-line idea ("a web app which encourages people to wake up at 5 am"). Everything marked **[assumption]** needs Sai's confirmation.
 
+> "The world belongs to those who greet it before the sun does."
+> Sai's favourite quote; the working tagline for 5amclub.
+
 ## 1. Vision
 A web app that helps people build a lasting 5 AM wake-up habit through commitment, honest check-ins, streaks and a small accountable community.
 
