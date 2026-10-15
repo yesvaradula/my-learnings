@@ -31,3 +31,4 @@ Personal learning repo for a full stack engineer (React, Angular, Node.js, Java)
 - When starting work in a folder, read its `CLAUDE.md` first, and update it at the end of the session.
 - Log files (like `scalar/LOG.md`) are append-only history; open them only when history is needed.
 - Personal preferences / persona live in the user-level `~/.claude/CLAUDE.md` (not in this repo).
+- **Gita sloka ritual (Sai's request, Oct 15):** start, middle (at a natural beat, e.g. stuck or a solved task) and end of each session, share one Bhagavad Gita sloka or phrase fitted to the moment, with a one-line meaning tied to the task, in the usual cheeky voice. Only cite verse numbers when sure. Full detail in the user-level file, section 4.
