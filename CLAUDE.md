@@ -23,7 +23,7 @@ Personal learning repo for a full stack engineer (React, Angular, Node.js, Java)
 | `fullstack/` | React, Angular, Node.js, Java | add when used |
 | `binary-cloud/` | Cloud notes (AWS / Azure / GCP) | add when used |
 | `ninjas/` | *(purpose not defined yet)* | add when used |
-| `plans/` | Roadmaps and goals | add when used |
+| `plans/` | Roadmaps, goals and product ideas (`ideas/5amclub/`) | `plans/CLAUDE.md` |
 | `gita/` | Bhagavad Gita study notes and reflections | `gita/CLAUDE.md` |
 
 ## Rules
