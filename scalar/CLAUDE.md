@@ -111,6 +111,7 @@ When a new problem is solved, add a file there and a row here.
 | 41 | Highest product of 3 numbers | Top-3 max + bottom-2 min, one pass | Answer = `max(max1*max2*max3, max1*min1*min2)`. Pick **any** 3, not a window. Multiply in `long`. Solution was provided (he was exhausted): rewrite from memory. |
 | 42 | Local minima (distinct) | Binary search, walk downhill | Check **both ends** first (covers `n == 2`), then search `[1, n-2]` so `m±1` stay in bounds. `m = s + (e - s) / 2`. |
 | 43 | Peak element (duplicates allowed) | Binary search, walk uphill | "Not smaller than" = `>=` in the peak test **and** both end checks. Move toward the strictly bigger neighbour. |
+| 45 | Max sum strictly increasing subarray (ChefNCook) | Kadane-style restart | `A[i] > A[i-1]` extend else `current = A[i]`. `long` (10^14). Equal breaks the run. Init `A[0]`. |
 | 44 | Find in sorted matrix (repeat of #27, practice contest) | Staircase from top-right | Contest brute force O(N·M) passes (≤ 10⁶ cells) but ignores sortedness; interview answer is O(N+M). On a match `c--`, 1-indexed. 13/13 PASS with `solveBrute` cross-check. |
 
 ## Parked practice (not started yet)
