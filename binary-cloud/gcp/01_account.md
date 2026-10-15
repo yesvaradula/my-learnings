@@ -53,6 +53,7 @@ Real hierarchy at company scale: `Organization → Folders → Projects → Reso
 
 ### Step 4: Understand what the trial gives you
 - **Free trial credits:** a fixed credit (historically **$300**) valid for a limited time (historically **90 days**). When credits or time run out, resources **stop**; you are **not charged** unless you manually **upgrade** to a paid account.
+  - **Observed on signup (Oct 15, 2026, India):** **₹28,000** credit, valid until **Dec 24, 2026** (about 70 days from signup). Shows the credit and expiry on the console banner / Billing → Credits.
 - **Always Free tier:** separate monthly free usage of some products (small `e2-micro` VM in selected regions, some Cloud Storage, Cloud Run requests, BigQuery queries, etc.). It survives after the trial, within limits.
 - Trial restrictions: some things (e.g. GPUs, high quotas, Windows server licences) may be blocked until you upgrade.
 
@@ -147,6 +148,17 @@ Use the credits on things worth learning, in this order:
 3. **Cloud SQL / Firestore:** a real backend for it.
 4. **IAM + service accounts + Workload Identity:** the security model clients ask about.
 5. **Vertex AI / Gemini API:** pairs with your Coding Ninjas RAG & agents classes.
+
+---
+
+## My setup log (Oct 15, 2026)
+- Google account with 2-Step Verification (authenticator app). Backup codes and a second factor still to add.
+- Trial: **₹28,000** credit, valid until **Dec 24, 2026**. Card/UPI verification charge was ₹2; the ₹15,000 UPI AutoPay shown is only a mandate ceiling, not a debit.
+- Auto-created "My First Project" kept untouched; created **`learning-sandbox`**, project ID **`learning-sandbox-511709`**, under organization `learnings-varadula-org`.
+- Budget **`learning-budget`**: ₹500, alerts at 50% / 90% / 100%.
+- Default region **`asia-south1`** (Mumbai). `gcloud compute instances list` works from Cloud Shell.
+- Lab: created a Windows (`ls-inst-win-server`, e2-medium, asia-south1-a, no external IP) and a Linux VM; deleted the Linux one, stopped the Windows one.
+- Lessons: typo `glcoud` for `gcloud`; stopped VMs still bill for disks; a budget alerts but does not cap.
 
 ---
 
