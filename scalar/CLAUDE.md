@@ -111,6 +111,7 @@ When a new problem is solved, add a file there and a row here.
 | 41 | Highest product of 3 numbers | Top-3 max + bottom-2 min, one pass | Answer = `max(max1*max2*max3, max1*min1*min2)`. Pick **any** 3, not a window. Multiply in `long`. Solution was provided (he was exhausted): rewrite from memory. |
 | 42 | Local minima (distinct) | Binary search, walk downhill | Check **both ends** first (covers `n == 2`), then search `[1, n-2]` so `m±1` stay in bounds. `m = s + (e - s) / 2`. |
 | 43 | Peak element (duplicates allowed) | Binary search, walk uphill | "Not smaller than" = `>=` in the peak test **and** both end checks. Move toward the strictly bigger neighbour. |
+| 44 | Find in sorted matrix (repeat of #27, practice contest) | Staircase from top-right | Contest brute force O(N·M) passes (≤ 10⁶ cells) but ignores sortedness; interview answer is O(N+M). On a match `c--`, 1-indexed. 13/13 PASS with `solveBrute` cross-check. |
 
 ## Parked practice (not started yet)
 - **2D arrays:** spiral print, rotate matrix 90° in place
@@ -119,7 +120,7 @@ When a new problem is solved, add a file there and a row here.
 ## Habits to watch
 - **Strengths:** asks *why* until it clicks; rewrites solutions from memory; keeps going when stuck.
 - **Forgets TC & SC** on submissions → always ask for them.
-- **Tests only one case** in `main` → insist on a test loop covering edge cases (empty, single element, negatives, k > n, all same, overflow-sized values).
+- **Tests only one case** in `main` → Claude adds the test loop after he finishes (see standing rule Oct 15); cover edge cases (empty, single element, negatives, k > n, all same, overflow-sized values).
 - Sometimes ignores problem constraints (e.g. used division / counting when told not to) → reread the rules.
 - Off-by-one in loop bounds (`i < n - 1` vs `i < n`) and 0- vs 1-indexed output.
 - **Edge cases are the main bug source:** the Oct 11 audit of old `tasks/` files found 7 buggy ones, nearly all n = 1, duplicates, index 0, or a "not found" value.
@@ -132,13 +133,16 @@ Full log lives in `scalar/LOG.md` (read it only when you need history). Latest e
 - **Oct 14 (late night):** #41 max product of 3: his sliding-window attempt failed (skipped -1/0/1, `abs` lost signs); he was exhausted, so the solution was provided. Rewrite #41 from memory Thu as a warm-up.
 - **Oct 14–15 (past midnight, after Cloud class):** Solved **#42** local minima and **#43** peak element (binary search). Bugs were all at the edges: missing end checks, the `n == 2` guard, swapped mid formula (`s - (e+s)/2` → index -1), strict `>` where the problem says "not smaller". Wrote TC/SC unprompted on #43. Still **no PASS/FAIL loop** in either file (I tested them in scratch).
 - **Oct 15 (~1 am):** Scaler **practice contest**: 2/4 in 25 min. Missed #41 (max product of 3, not rewritten yet) and one more; code + 4th statement to be shared Thu morning.
-- **Next (Thu Oct 15, morning):** review the 2 practice-contest solutions + the 4th problem, #41 from memory (10 min), then 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview; bit manipulation in the afternoon. He chose to skip tonight's slot (Wed has Cloud class at 9:30 pm). Recursion postponed. Write the test loop **alone**, no exceptions.
+- **Oct 15 (Thu, morning):** Reviewed the practice-contest code. `ChefNCook.java` (max strictly increasing subarray sum, Kadane-style, `long`): logic correct, but no TC/SC and a one-case `main`: **test loop still owed**. `FindInMetrics.java` (= #27): brute force O(N·M) plus a stray `}`; he fixed the brace, then rewrote the **staircase** himself (correct; hand-traced `{{1,2},{3,3}}`, B=3 → 2019). Now **#44** with a 13-case PASS/FAIL loop. The 4th problem (`SmallestValue.java`, array B of length A, `B[i] != B[j]` when `i | j`, minimize the max, then lexicographically smallest) he **did not understand**: explained in plain English, he is to fill A = 1, 2, 4, 6, 8 by hand and find the pattern (hint: tracks the prime factorization of `j`). No code yet.
+- **Next (Thu Oct 15, morning):** review the 2 practice-contest solutions + the 4th problem, #41 from memory (10 min), then 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview; bit manipulation in the afternoon. He chose to skip tonight's slot (Wed has Cloud class at 9:30 pm). Recursion postponed.
 
 ## Session tips
 - Start from the repo root (`D:\learnings\sc\dsa`) or from `scalar/`; both load this file.
 - Use `claude -c` to continue the last conversation mid-problem, `claude -r` to pick an older one.
 - At the end of each session, update the solved table / habits here and **append** to `scalar/LOG.md`.
 - **Standing rule (Oct 14, from Sai):** by default, at the end of every conversation, or mid-way after each solved/explained task, do all of: add a `scalar/problems/NN-*.md` write-up, update this file (solved table, habits, session log), append to `LOG.md`, then commit and push to git. Don't wait to be asked.
+
+- **Standing rule (Oct 15, from Sai):** Claude writes and runs the test loop (`expected` array + PASS/FAIL, edge cases, brute-force cross-check where useful). Sai only writes the solution and tries 1-2 examples himself; once he says the task is done, add the tests to `main`, run them, report failures. This replaces the old "write the test loop alone" rule: scaffolding was eating his learning time. He should still be able to name the edge cases out loud (interview skill).
 
 ## Review workflow
 1. Explain the task simply (strip the story), give examples, edge cases, and guiding questions; hints in levels, not full answers.
