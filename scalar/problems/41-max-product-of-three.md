@@ -51,3 +51,11 @@ Scaler wrapper: `public class Solution { public int maxp3(int[] A) { ... } }`.
 
 ## Tests
 `[1,2,3]`→6 · `[0,0,0]`→0 · `[-1,-2,-3]`→-6 · `[-5,-4,-3,-2]`→-24 · `[10,5,9,20,15]`→3000 · `[-10,-10,1,3,2]`→300 · `[-10,-3,5,6,-2]`→180 · `[0,-1,3,100,-70,-50]`→350000 · `[1,1,1,1]`→1 · `[-1,0,1]`→0 · `[-5,-6,0,1]`→30 · `[1000,1000,1000,-1]`→1000000000.
+
+## Rewrite from memory (Oct 16)
+`scalar/reharsals/MaxProductOfThreeV2.java`, written from a blank file. Top-3 max chain and the two candidates were right first time. Bugs hit:
+- `return` inside the `for` loop: "missing return statement" compile error, and it would have returned after the first element.
+- `min_2 = min;` (the `Integer.MIN_VALUE` sentinel) instead of `min_2 = num;`. Only shows when the second-smallest arrives after the smallest via the `else if`: `[-10,-10,1,3,2]` → 0 instead of 300. Cause: sentinels named `max`/`min` (holding MAX/MIN for the opposite chains). Rename to `INF`/`NEG_INF`.
+- Products in `int`: fixed with `(long) a * b * c` (cast before the first multiply).
+- TC O(n), SC O(1): stated after being asked, not unprompted.
+Final: 12/12 PASS + 0 mismatches against an O(n³) brute force on 2000 random arrays.
