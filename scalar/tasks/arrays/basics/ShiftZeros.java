@@ -9,25 +9,24 @@ The warehouse manager wants the shelf reorganized so that all the actual product
 What's the core issue here, and what does "no separate staging area" tell you about the approach you need?
 */
 
-
 public class ShiftZeros {
 	public static void main(String args[]) {
-			int[] A = { 123, 0, 0, 23, 8, 0, 82, 12, 4, 3}; 
+		int[] A = { 123, 0, 0, 0, 8, 0, 82, 12, 4, 3 };
 
-			int j = 0;
+		int j = 0;
 
-			for(int i = 0; i < A.length; i++ ) {
-				if( A[i] != 0 ) {
-					A[j] = A[i];
-					j++;
-				}
-			}
-
-			while( j < A.length) {
-				A[j] = 0;
+		for (int i = 0; i < A.length; i++) {
+			if (A[i] != 0) {
+				A[j] = A[i];
 				j++;
 			}
+		}
 
-			System.out.println(java.util.Arrays.toString(A));
+		while (j < A.length) {
+			A[j] = 0;
+			j++;
+		}
+
+		System.out.println(java.util.Arrays.toString(A));
 	}
 }

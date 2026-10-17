@@ -12,7 +12,7 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 | # | Date | Time | Topics | Result |
 |---|------|------|--------|--------|
 | 1 | 2026-10-07 | 7:00–8:30 am | Arrays, 2D Arrays, Bit Manipulation, Recursion, Math, Hashing, Sorting | 1/4 solved (Trapping Rain Water) |
-| 2 | 2026-10-21 (Wed; postponed from Oct 13) | 10:00 pm (clashes with Binary Cloud 9:30-11) | Same topics, 4 new problems | Goal: solve all 4 |
+| 2 | 2026-10-21 (Wed; postponed from Oct 13) | 10:00 pm (Binary Cloud 9:30-11 that night: he'll watch the recording) | Same topics, 4 new problems | Goal: solve all 4 |
 
 ### Contest 1: missed problems (review these)
 1. **Bitville XOR pairs**: for each query bit `b`, count pairs whose b-th bits differ.
