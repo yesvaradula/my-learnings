@@ -22,7 +22,7 @@ Personal learning repo for a full stack engineer (React, Angular, Node.js, Java)
 | `scalar/` | DSA contest prep (Java): `tasks/`, `problems/`, `archive/` | `scalar/CLAUDE.md` (+ `scalar/LOG.md`) |
 | `fullstack/` | React, Angular, Node.js, Java | add when used |
 | `binary-cloud/` | Cloud notes (AWS / Azure / GCP) | add when used |
-| `ninjas/` | *(purpose not defined yet)* | add when used |
+| `ninjas/` | Coding Ninjas course: AI, LLMs, RAG, Agents (`agents/`) | `ninjas/CLAUDE.md` |
 | `plans/` | Roadmaps, goals and product ideas (`ideas/5amclub/`) | `plans/CLAUDE.md` |
 | `gita/` | Bhagavad Gita study notes and reflections | `gita/CLAUDE.md` |
 
