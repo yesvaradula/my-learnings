@@ -32,4 +32,4 @@ Whenever explaining a concept, chapter, or verse, structure your response using 
 - Add chapter notes and verse reflections here as files (one per chapter or theme), and list them in the index below.
 
 ## Index
-- *(empty)*
+- [introduction.md](introduction.md): overview of the Gita: setting, speakers, all 18 chapters with verse counts, five key verses, study plan.
