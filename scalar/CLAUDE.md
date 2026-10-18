@@ -29,7 +29,7 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 ## Interview: DSA Fundamentals Mastery (Scaler mock)
 
 **Postponed (told Oct 17): Fri Oct 23, 8:30 am** (was Sun Oct 18, 9:30 pm). Clashes with Friday Scalar class (7-9:30 am). The day-by-day table below is the old Oct 18 plan; see "Combined plan (Oct 17-23)". Live coding with a real interviewer, Java, explain scenarios out loud. Topics: Strings, Arrays, Prefix sum, Carry forward, Array techniques/subarrays, Bit manipulation, 2D arrays. Recursion is **not** on the list.
-Coverage: arrays/prefix/carry forward/subarrays strong (#1-11, 17-18, 23, 28-31); strings decent (#12, 14, 21, 34, 35, 38); **bit manipulation thin** (only XOR pairs); **2D arrays gap** (spiral, rotate 90° not started).
+Coverage: arrays/prefix/carry forward/subarrays strong (#1-11, 17-18, 23, 28-31); strings decent (#12, 14, 21, 34, 35, 38); **bit manipulation thin** (only XOR pairs); **2D arrays gap** (rotate 90° done Oct 18 as #46; spiral not started).
 
 | Day | Focus |
 |-----|-------|
@@ -125,9 +125,10 @@ When a new problem is solved, add a file there and a row here.
 | 43 | Peak element (duplicates allowed) | Binary search, walk uphill | "Not smaller than" = `>=` in the peak test **and** both end checks. Move toward the strictly bigger neighbour. |
 | 45 | Max sum strictly increasing subarray (ChefNCook) | Kadane-style restart | `A[i] > A[i-1]` extend else `current = A[i]`. `long` (10^14). Equal breaks the run. Init `A[0]`. |
 | 44 | Find in sorted matrix (repeat of #27, practice contest) | Staircase from top-right | Contest brute force O(N·M) passes (≤ 10⁶ cells) but ignores sortedness; interview answer is O(N+M). On a match `c--`, 1-indexed. 13/13 PASS with `solveBrute` cross-check. |
+| 46 | Rotate matrix 90° clockwise, in place | Transpose + reverse each row | Transpose from `j = i + 1` (`j = 0` double-swaps). Fresh `left = 0, right = n - 1` per row. `while (x < y)`. 7/7 + 500 random cross-check (Oct 18), after three bug rounds Oct 16-17. |
 
 ## Parked practice (not started yet)
-- **2D arrays:** spiral print, rotate matrix 90° in place
+- **2D arrays:** spiral print (rotate 90° done, #46)
 - **Recursion warm-up:** sum of digits, palindrome check, fast power (O(log n)), print all subsets
 
 ## Habits to watch
@@ -150,6 +151,7 @@ Full log lives in `scalar/LOG.md` (read it only when you need history). Latest e
 - **Oct 15 (Thu, afternoon):** #41 approach explained correctly but pasted code was a copy of the provided solution; **rewrite from a blank file is parked as "later"**. SmallestValue, 2D arrays and bit manipulation still open. Pivoted to Binary Cloud (`binary-cloud/gcp/01_account.md`).
 - **Next (Thu Oct 15, morning):** review the 2 practice-contest solutions + the 4th problem, #41 from memory (10 min), then 2D arrays (traversal warm-up, then spiral, rotate 90°) for the Oct 18 interview; bit manipulation in the afternoon. He chose to skip tonight's slot (Wed has Cloud class at 9:30 pm). Recursion postponed.
 - **Oct 16 (Fri):** #41 rewritten from a blank file: fixed `return`-in-loop, `long` cast, and the `min_2 = min` sentinel bug (missed it once, caught by `[-10,-10,1,3,2]`). TC/SC given only when asked. Today's re-plan: 2D arrays (rotate 90°, spiral) + bit manipulation, since Thu's slot went to GCP; prefix-sum re-solves move to Sat.
+- **Oct 18 (Sun, Navratri; Ninjas class cancelled):** **#46 RotateMatrix solved** (7/7 + 500 random cross-check). Did the cleanup himself (`j = i + 1`, `x < y`, `n`). TC/SC written unprompted. Saturday's spiral + bit basics carried over; today: spiral, bits, then hashing + sorting.
 
 ## Session tips
 - Start from the repo root (`D:\learnings\sc\dsa`) or from `scalar/`; both load this file.

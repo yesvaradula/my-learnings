@@ -11,7 +11,7 @@ For Contest 2 (Wed Oct 21, 10 pm) and the mock interview (Fri Oct 23, 8:30 am). 
 | Row / column traversal | Outer loop fixes the row (or column), inner loop walks it | Mixing up `n` and `m` on non-square matrices |
 | Main diagonal | `i == j` | |
 | Anti-diagonal | `i + j == n - 1` | |
-| Transpose (square, in place) | Swap `A[i][j]` and `A[j][i]` for cells above the diagonal only: `j = ___` (fill in once RotateMatrix is solved) | `j = 0` swaps every pair twice, so nothing changes |
+| Transpose (square, in place) | Swap `A[i][j]` and `A[j][i]` for cells above the diagonal only: `j = i + 1` (the diagonal stays put; #46) | `j = 0` swaps every pair twice, so nothing changes |
 | Rotate 90 clockwise | Transpose, then reverse each row | Each row needs its own `left` / `right` pointers |
 | Rotate 90 counter-clockwise | Transpose, then reverse each column | Common follow-up |
 | Boundary (#22) | Four edge loops, each stopping one short | 1x1, single row, single column |
