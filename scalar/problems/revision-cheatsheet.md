@@ -21,6 +21,8 @@ For Contest 2 (Wed Oct 21, 10 pm) and the mock interview (Fri Oct 23, 8:30 am). 
 
 ## Bit manipulation
 
+Full guide with explanations, patterns and a practice ladder: `bit.md`.
+
 ```java
 (x >> k) & 1                  // check bit k (0 or 1)
 x | (1 << k)                  // set bit k

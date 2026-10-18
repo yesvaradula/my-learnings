@@ -77,6 +77,7 @@ Interview script for every problem: restate, walk an example, brute force, impro
 Full write-ups (problem, idea, final code, bugs hit, tests) live in `scalar/problems/`, one file per task:
 `01-` … `43-` for practice problems (⚠️ = bug found in the saved `scalar/tasks/` file; the write-up has the fix), `contest<N>-<k>-…` for missed contest problems.
 When a new problem is solved, add a file there and a row here.
+Reference notes (not problems): `revision-cheatsheet.md` (2D arrays, bits, subarrays) and `bit.md` (bit manipulation guide with a practice ladder; tick its Status column as ladder problems are solved).
 
 | # | Problem | Pattern | Remember |
 |---|---------|---------|----------|
