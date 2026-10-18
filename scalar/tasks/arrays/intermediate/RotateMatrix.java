@@ -65,9 +65,7 @@ public class RotateMatrix {
 
         for (int i = 0; i < A.length; i++) {
             for (int j = i + 1; j < A[0].length; j++) {
-                int temp = A[i][j];
-                A[i][j] = A[j][i];
-                A[j][i] = temp;
+                swap(A, i, j, j, i);
             }
         }
 
@@ -76,9 +74,7 @@ public class RotateMatrix {
             int y = n - 1;
 
             while (x < y) {
-                int temp = A[i][x];
-                A[i][x] = A[i][y];
-                A[i][y] = temp;
+                swap(A, i, x, i, y);
 
                 x++;
                 y--;
@@ -89,5 +85,11 @@ public class RotateMatrix {
         return A;
     }
 
-    // static void swap(A, )
+    // Swaps A[r1][c1] and A[r2][c2]. Works because A is a reference to the same
+    // array, so changes made here are visible to the caller.
+    static void swap(int[][] A, int r1, int c1, int r2, int c2) {
+        int temp = A[r1][c1];
+        A[r1][c1] = A[r2][c2];
+        A[r2][c2] = temp;
+    }
 }
