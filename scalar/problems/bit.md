@@ -28,6 +28,43 @@ place value:  128  64  32  16   8   4   2   1
 
 - Bit 0 is the **least significant bit (LSB)**, the rightmost one. It decides odd or even.
 - The leftmost bit is the **most significant bit (MSB)**.
+### Bit positions and their values
+
+Positions are counted **from the right, starting at 0**, and **position `k` is worth `2^k`**:
+
+```
+position (bit k):   3     2     1     0
+value (2^k):        8     4     2     1
+```
+
+It is the same idea as decimal places, where position `k` is worth `10^k`:
+
+```
+decimal 345:   position 2 = hundreds (100), position 1 = tens (10), position 0 = ones (1)
+               300 + 40 + 5
+```
+
+In binary each place is worth 2 times the one to its right instead of 10 times. So "bit 2" means "the third box from the right, worth 4".
+
+Worked example, `x = 10`:
+
+```
+position:   3   2   1   0
+value:      8   4   2   1
+bits:       1   0   1   0     ->  10 = 8 + 2
+```
+
+- Bit 3 sits under 8 and is 1: 10 contains an 8, so bit 3 is **set**.
+- Bit 2 sits under 4 and is 0: 10 has no 4, so bit 2 is **not set**.
+- Bit 1 sits under 2 and is 1: **set**.
+- Bit 0 sits under 1 and is 0: **not set** (10 is even).
+
+**Key question:** "Is bit `k` set?" means "does `2^k` appear when `x` is built out of powers of 2?" Use this to sanity-check any bit answer in your head.
+
+### The number is already stored in binary
+
+`int x = 13;` does not keep the digits "1" and "3". The compiler stores the bits `00000000 00000000 00000000 00001101` once, and `println` turns them back into "13" for humans to read. Decimal, hex and binary are different clothes for the same value; bit operations work on the value as it really sits in memory. Nothing is converted when you shift or mask.
+
 - A number `x` has about `log2(x) + 1` bits, so a loop over the bits of `x` is O(log x), which is at most 32 iterations for an `int` and 64 for a `long`. Treat it as O(1) in complexity answers, but say why.
 
 Decimal to binary by hand: divide by 2 repeatedly and read the remainders bottom to top.
@@ -123,6 +160,38 @@ x = x | (1 << k);                      // set bit k to 1
 x = x & ~(1 << k);                     // clear bit k to 0
 x = x ^ (1 << k);                      // toggle bit k
 ```
+
+### How `(x >> k) & 1` reads one bit, step by step
+
+1. `x >> k` slides the bits right by `k` places. The `k` rightmost bits fall off, so bit `k` lands at position 0.
+2. `& 1` keeps only position 0. `1` is `000...0001`, and AND gives 1 only where both sides are 1, so every other bit is wiped out. The result is exactly 0 or 1.
+
+Without `& 1`, `13 >> 2` gives `11` (3), not a clean yes/no.
+
+All bits of `x = 13` (`1101`):
+
+| k | `13 >> k` | `& 1` | bit k |
+|---|---|---|---|
+| 0 | `1101` | 1 | 1 |
+| 1 | `110` | 0 | 0 |
+| 2 | `11` | 1 | 1 |
+| 3 | `1` | 1 | 1 |
+
+Read the last column from bottom to top: `1101` = 13. Looping `k` from 31 down to 0 this way prints the full binary of any `int`, negatives included (`scalar/tasks/bits/ConvertToBinary.java`).
+
+`x = 10` (`1010`):
+
+```
+10 >> 1 = 101   & 1 = 1   bit 1 set      (10 contains 2)
+10 >> 2 = 10    & 1 = 0   bit 2 not set  (10 has no 4)
+10 >> 3 = 1     & 1 = 1   bit 3 set      (10 contains 8)
+```
+
+Picture: the number is a train sliding right past a window at position 0. `>> k` slides carriage `k` into the window; `& 1` looks only through the window.
+
+Recipe: write `x` in binary, drop `k` digits off the right end, look at the last digit.
+
+### All four single-bit operations
 
 Why each works, with `x = 1101` (13) and `k = 1`:
 - `1 << 1 = 0010`, a mask with only bit 1 on.
