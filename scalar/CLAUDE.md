@@ -12,7 +12,7 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 | # | Date | Time | Topics | Result |
 |---|------|------|--------|--------|
 | 1 | 2026-10-07 | 7:00–8:30 am | Arrays, 2D Arrays, Bit Manipulation, Recursion, Math, Hashing, Sorting | 1/4 solved (Trapping Rain Water) |
-| 2 | 2026-10-21 (Wed; postponed from Oct 13) | 10:00 pm (Binary Cloud 9:30-11 that night: he'll watch the recording) | Same topics, 4 new problems | Goal: solve all 4 |
+| 2 | 2026-10-22 (Thu; moved Oct 20 from Wed Oct 21, originally Oct 13) | 9:30 pm (clashes with Binary Cloud 9:30-11: watch the recording) | Same topics, 4 new problems | Goal: solve all 4 |
 
 ### Contest 1: missed problems (review these)
 1. **Bitville XOR pairs**: for each query bit `b`, count pairs whose b-th bits differ.
@@ -45,9 +45,9 @@ Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 2
 | Day | Focus |
 |-----|-------|
 | Tue Oct 20 | Free gap 2-9:30 pm: hashing (frequency map, pair sum, first repeating, distinct count) + sorting (comparator, sort-then-scan, count inversions idea). Park RotatedSortedArraySearch (binary search is not on the list) |
-| Wed Oct 21 | After Scalar class: recursion warm-up (sum of digits, palindrome, fast power, subsets) + math (gcd, mod, primes). Light by evening. **Contest 2 at 10 pm** |
-| Thu Oct 22 | Review contest misses; bit manipulation ladder from `bit.md` |
-| Fri Oct 23 | After Scalar class: re-solve weakest topic from the contest out loud |
+| Wed Oct 21 | After Scalar class: recursion warm-up (sum of digits, palindrome, fast power, subsets) + math (gcd, mod, primes) |
+| Thu Oct 22 | Daytime: bit manipulation ladder from `bit.md` + one 90-min mixed timed mock (4 problems). Light by evening. **Contest 2 at 9:30 pm** |
+| Fri Oct 23 | After Scalar class: review contest misses, re-solve the weakest topic out loud |
 | Sat Oct 24 | After Coding Ninjas (2 pm): 60-min interview-mode mock, mixed topics, explained aloud. Early sleep |
 | Sun Oct 25 | **Mock interview (tentative, time TBD)**. Light warm-up only |
 
