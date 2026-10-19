@@ -28,8 +28,9 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 
 ## Interview: DSA Fundamentals Mastery (Scaler mock)
 
-**Postponed (told Oct 17): Fri Oct 23, 8:30 am** (was Sun Oct 18, 9:30 pm). Clashes with Friday Scalar class (7-9:30 am). The day-by-day table below is the old Oct 18 plan; see "Combined plan (Oct 17-23)". Live coding with a real interviewer, Java, explain scenarios out loud. Topics: Strings, Arrays, Prefix sum, Carry forward, Array techniques/subarrays, Bit manipulation, 2D arrays. Recursion is **not** on the list.
-Coverage: arrays/prefix/carry forward/subarrays strong (#1-11, 17-18, 23, 28-31); strings decent (#12, 14, 21, 34, 35, 38); **bit manipulation thin** (only XOR pairs); 2D arrays covered Oct 18 (rotate 90° #46, spiral #47).
+**Postponed again (told Oct 20): tentatively Sun Oct 25, time TBD** (was Fri Oct 23, 8:30 am; originally Sun Oct 18, 9:30 pm). Sunday has Coding Ninjas 11 am-2 pm: check for a clash once the time is known. Live coding with a real interviewer, Java, explain scenarios out loud.
+**Topics corrected (Oct 20):** the interview topics are the **same as the contests**: Arrays, 2D Arrays, Bit Manipulation, Recursion, Math, Hashing, Sorting. The earlier list (strings, prefix sum, carry forward, subarrays) was his mistake; those still help under "Arrays" but are no longer the focus.
+Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 22, 27, 44, 46, 47); bit manipulation thin (XOR pairs + `bit.md` guide); **recursion, math, hashing, sorting not practised yet** (the Oct 18-19 slots for them did not happen). The day-by-day table below is the old Oct 18 plan; see "Combined plan (Oct 20-25)".
 
 | Day | Focus |
 |-----|-------|
@@ -39,17 +40,16 @@ Coverage: arrays/prefix/carry forward/subarrays strong (#1-11, 17-18, 23, 28-31)
 | Oct 17 (Sat) | After Coding Ninjas (2 pm): strings + the real timed mock (3 problems, 60 min, explained aloud) |
 | Oct 18 (Sun) | Coding Ninjas 11-2. Light warm-up ~4-6 pm, no new topics, rest. Interview 9:30 pm |
 
-### Combined plan (Oct 17-23): contest first, interview after
+### Combined plan (Oct 20-25): contest first, interview after (same topics for both)
 
 | Day | Focus |
 |-----|-------|
-| Sat Oct 17 | After Coding Ninjas (2 pm): finish RotateMatrix (fill-in skeleton), spiral print, then bit manipulation basics (check/set/clear bit, count set bits, power of 2, single number) |
-| Sun Oct 18 | After Coding Ninjas: hashing + sorting (contest-only topics, never practised) |
-| Mon Oct 19 | Free gap 2-9:30 pm: recursion warm-up (sum of digits, palindrome, fast power, subsets) + math (gcd, mod, primes) |
-| Tue Oct 20 | Full 90-min timed mock, 4 mixed problems; fix whatever broke |
-| Wed Oct 21 | Light review only. **Contest 2 at 10 pm** |
-| Thu Oct 22 | Interview mode: strings + prefix sum / carry forward / subarray re-solves out loud, 60-min mock explained aloud. Early sleep |
-| Fri Oct 23 | **Mock interview 8:30 am** |
+| Tue Oct 20 | Free gap 2-9:30 pm: hashing (frequency map, pair sum, first repeating, distinct count) + sorting (comparator, sort-then-scan, count inversions idea). Park RotatedSortedArraySearch (binary search is not on the list) |
+| Wed Oct 21 | After Scalar class: recursion warm-up (sum of digits, palindrome, fast power, subsets) + math (gcd, mod, primes). Light by evening. **Contest 2 at 10 pm** |
+| Thu Oct 22 | Review contest misses; bit manipulation ladder from `bit.md` |
+| Fri Oct 23 | After Scalar class: re-solve weakest topic from the contest out loud |
+| Sat Oct 24 | After Coding Ninjas (2 pm): 60-min interview-mode mock, mixed topics, explained aloud. Early sleep |
+| Sun Oct 25 | **Mock interview (tentative, time TBD)**. Light warm-up only |
 
 Interview script for every problem: restate, walk an example, brute force, improve, code, edge-case test loop, state TC & SC unprompted.
 
