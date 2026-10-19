@@ -89,27 +89,158 @@ int hex  = 0xFF;                  // 255, hex is a short way to write bit patter
 
 ## 3. Negative numbers: two's complement
 
-Java `int` is 32 bits, `long` is 64 bits, both **signed**, both in **two's complement**.
+Java `int` is 32 bits, `long` is 64 bits, both **signed**, both in **two's complement**. The examples below use **4 bits** to stay readable; 32 bits follow the same rules with more digits.
 
-- The MSB is the sign bit: 0 means non-negative, 1 means negative.
-- To negate: flip all bits, then add 1. So **`-x == ~x + 1`**.
+### Binary addition (needed to see why two's complement works)
+
+Same as school addition, but you carry at 2 instead of 10.
+
+| Add | Result | Write | Carry |
+|---|---|---|---|
+| 0 + 0 | 0 | 0 | 0 |
+| 0 + 1 | 1 | 1 | 0 |
+| 1 + 1 | 2 = `10` | 0 | 1 |
+| 1 + 1 + 1 (with carry) | 3 = `11` | 1 | 1 |
+
+Work right to left, column by column. Example `0101 + 1101`:
 
 ```
- 5 = 0000 ... 0101
-~5 = 1111 ... 1010   (= -6)
-+1 = 1111 ... 1011   (= -5)
--1 = 1111 ... 1111   (all ones)
+carry:   1 1 0 1
+           0 1 0 1
+         + 1 1 0 1
+         ---------
+         1 0 0 1 0     5 bits; only 4 fit, the leftmost 1 falls off -> 0010
 ```
 
-Ranges and the overflow edge:
+| Column | Add | Write | Carry |
+|---|---|---|---|
+| bit 0 | 1 + 1 | 0 | 1 |
+| bit 1 | 0 + 0 + 1 | 1 | 0 |
+| bit 2 | 1 + 1 | 0 | 1 |
+| bit 3 | 0 + 1 + 1 | 0 | 1 |
+| beyond | leftover carry | 1 (dropped) | |
+
+Sanity check as unsigned numbers: 5 + 13 = 18 = `10010`; dropping the 16 leaves 2 = `0010`.
+
+### The problem: memory has no minus sign
+
+Only 0s and 1s are stored, so a negative number has to be encoded in bits.
+
+**The naive idea (sign-magnitude):** use the first bit as the sign, so +5 = `0101` and -5 = `1101`. It breaks:
+- There are two zeros: `0000` (+0) and `1000` (-0).
+- Addition fails: 5 + (-5) should be 0, but `0101 + 1101 = 0010` (2), as computed above.
+
+### Two's complement: the odometer
+
+Picture a 4-bit counter as a car odometer. Counting down past 0 wraps around:
+
+```
+ 2 = 0010
+ 1 = 0001
+ 0 = 0000
+-1 = 1111    one step below 0 wraps to all ones
+-2 = 1110
+-3 = 1101
+```
+
+-1 is simply "the number that gives 0 when you add 1": `1111 + 0001 = 10000`, the extra carry falls off, leaving `0000`.
+
+Now addition works with no special cases: 5 + (-5) with -5 = `1011`:
+
+```
+  0101    (5)
++ 1011    (-5)
+------
+ 10000  -> drop the overflow bit -> 0000 = 0
+```
+
+This is why every computer uses it: one adder circuit handles positive and negative numbers alike.
+
+### The full 4-bit table
+
+| Bits | Value | | Bits | Value |
+|---|---|---|---|---|
+| `0000` | 0 | | `1000` | -8 |
+| `0001` | 1 | | `1001` | -7 |
+| `0010` | 2 | | `1010` | -6 |
+| `0011` | 3 | | `1011` | -5 |
+| `0100` | 4 | | `1100` | -4 |
+| `0101` | 5 | | `1101` | -3 |
+| `0110` | 6 | | `1110` | -2 |
+| `0111` | 7 | | `1111` | -1 |
+
+1. **The leftmost bit (MSB) is the sign:** 0 means non-negative, 1 means negative.
+2. **Only one zero.**
+3. **The range is lopsided:** -8 to +7. Zero takes one of the non-negative patterns, so there is one extra negative.
+
+### Reading a negative number: the top bit is worth a negative amount
+
+In two's complement the place value of the top bit is **negative**. For 4 bits:
+
+```
+position:    3     2    1    0
+value:      -8     4    2    1
+```
+
+- `1011` = -8 + 0 + 2 + 1 = **-5**
+- `1111` = -8 + 4 + 2 + 1 = **-1**
+- `1000` = **-8**
+
+For a 32-bit `int`, the top bit is worth `-2^31`, and every other bit keeps its normal `2^k`.
+
+### Negating: flip all bits, then add 1 (`-x == ~x + 1`)
+
+Why it works: `x + ~x` is all ones, because every bit is 1 in exactly one of the two.
+
+```
+ x  = 0101   (5)
+~x  = 1010
+sum = 1111   = -1
+```
+
+So `x + ~x = -1`, which gives `~x = -x - 1`, and therefore `~x + 1 = -x`.
+
+```
+ 5      = 0101
+~5      = 1010   (= -6)
+~5 + 1  = 1011   (= -5)
+```
+
+### The edge cases that cause bugs
+
+**The minimum has no positive twin.** Negate -8 in 4 bits: `~1000 = 0111`, plus 1 = `1000`, which is -8 again. +8 does not fit (max is 7), so it wraps back. In Java:
+
+```java
+-Integer.MIN_VALUE == Integer.MIN_VALUE    // true
+Math.abs(Integer.MIN_VALUE)                // still negative
+```
+
+**Overflow wraps silently.** `0111 + 1 = 1000`: 7 + 1 becomes -8. In Java, `Integer.MAX_VALUE + 1 == Integer.MIN_VALUE`, with no error and no warning. Use `long` for sums and products that can get big.
+
+**`1 << 31` is negative.** It sets the sign bit, giving `Integer.MIN_VALUE`, not 2^31.
+
+### Back to 32 bits: sign extension
+
+`toBinary(-5)` from `ConvertToBinary.java` prints:
+
+```
+11111111111111111111111111111011
+```
+
+It is the 4-bit `1011` with more 1s on the left. Negative numbers carry a run of leading 1s, non-negative numbers a run of leading 0s. Copying the sign bit leftward to fill a wider type is called **sign extension**, and it is why `>>` fills with 1s on negatives: it keeps a negative number negative after the shift.
+
+Ranges:
 
 | Type | Bits | Min | Max |
 |---|---|---|---|
 | `int` | 32 | `-2^31` = -2,147,483,648 | `2^31 - 1` = 2,147,483,647 |
 | `long` | 64 | `-2^63` | `2^63 - 1` |
 
-- `Integer.MIN_VALUE` has no positive twin: `-Integer.MIN_VALUE == Integer.MIN_VALUE` and `Math.abs(Integer.MIN_VALUE)` is still negative.
-- `1 << 31` is `Integer.MIN_VALUE` (negative), not 2^31.
+### Summary
+
+Negatives are stored so that addition just works. The top bit has a negative place value, so a 1 there makes the number negative. To negate, flip all bits and add 1. The range is lopsided (one extra negative), so `MIN_VALUE` cannot be negated, and going past `MAX_VALUE` wraps to `MIN_VALUE` without any error.
+
+Self-check: write -3 in 4 bits by flipping `0011` and adding 1, then confirm with the -8 trick (answer in the table above).
 
 ---
 
