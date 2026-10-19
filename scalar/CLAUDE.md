@@ -128,6 +128,7 @@ Reference notes (not problems): `revision-cheatsheet.md` (2D arrays, bits, subar
 | 45 | Max sum strictly increasing subarray (ChefNCook) | Kadane-style restart | `A[i] > A[i-1]` extend else `current = A[i]`. `long` (10^14). Equal breaks the run. Init `A[0]`. |
 | 44 | Find in sorted matrix (repeat of #27, practice contest) | Staircase from top-right | Contest brute force O(N·M) passes (≤ 10⁶ cells) but ignores sortedness; interview answer is O(N+M). On a match `c--`, 1-indexed. 13/13 PASS with `solveBrute` cross-check. |
 | 46 | Rotate matrix 90° clockwise, in place | Transpose + reverse each row | Transpose from `j = i + 1` (`j = 0` double-swaps). Fresh `left = 0, right = n - 1` per row. `while (x < y)`. 7/7 + 500 random cross-check (Oct 18), after three bug rounds Oct 16-17. |
+| 48 | First repeating element | Count map + second pass over the **array** | Answer is the repeat whose first occurrence is earliest (`[10,5,3,4,3,5,6]` -> 5, not 3). Value is the key; `getOrDefault(x, 0) + 1`. Loop `A` in pass 2, never the map. 14/14 + 2000 random (Oct 20), after 7 bug rounds. |
 | 47 | Spiral order (n x m) | Four shrinking walls | Separate `j` walks, walls move one step. `while (top <= bottom && left <= right)`; `if` guards on bottom row and left column (else a leftover row/column is re-read). Row first, column second. 9/9 + 500 random (Oct 18). |
 
 ## Parked practice (not started yet)
@@ -143,6 +144,8 @@ Reference notes (not problems): `revision-cheatsheet.md` (2D arrays, bits, subar
 - Says "fixed all" when some fixes are unsaved or missing → rerun before claiming done.
 - **Edge cases are the main bug source:** the Oct 11 audit of old `tasks/` files found 7 buggy ones, nearly all n = 1, duplicates, index 0, or a "not found" value.
 - **Eyeballs test output** instead of comparing to expected values → insist on an `expected` array + PASS/FAIL print.
+- **Rewrites code that already worked** while fixing a different line (pass 2 of #48 broken after being correct). Change one thing, rerun.
+- **HashMap: puts the index where the value belongs**, uses `containsValue`, and loops the map by position. Ask "what do I look up by?" before each `put`.
 - Postpones the hard task ("first thing tomorrow") → hold him to it at the start of the session.
 
 ## Session log
