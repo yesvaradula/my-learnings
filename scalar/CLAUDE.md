@@ -30,6 +30,7 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 
 **Postponed again (told Oct 20): tentatively Sun Oct 25, time TBD** (was Fri Oct 23, 8:30 am; originally Sun Oct 18, 9:30 pm). Sunday has Coding Ninjas 11 am-2 pm: check for a clash once the time is known. Live coding with a real interviewer, Java, explain scenarios out loud.
 **Topics corrected (Oct 20):** the interview topics are the **same as the contests**: Arrays, 2D Arrays, Bit Manipulation, Recursion, Math, Hashing, Sorting. The earlier list (strings, prefix sum, carry forward, subarrays) was his mistake; those still help under "Arrays" but are no longer the focus.
+**Detailed syllabus (Oct 20, for Contest 2 and the mock):** Hashing; Modular Arithmetic & GCD; Sorting: Count Sort, Merge Sort, Quick Sort, Comparator problems. Still to confirm: whether arrays / 2D arrays / bits / recursion remain in scope.
 Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 22, 27, 44, 46, 47); bit manipulation thin (XOR pairs + `bit.md` guide); **recursion, math, hashing, sorting not practised yet** (the Oct 18-19 slots for them did not happen). The day-by-day table below is the old Oct 18 plan; see "Combined plan (Oct 20-25)".
 
 | Day | Focus |
@@ -44,9 +45,9 @@ Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 2
 
 | Day | Focus |
 |-----|-------|
-| Tue Oct 20 | Free gap 2-9:30 pm: hashing (frequency map, pair sum, first repeating, distinct count) + sorting (comparator, sort-then-scan, count inversions idea). Park RotatedSortedArraySearch (binary search is not on the list) |
-| Wed Oct 21 | After Scalar class: recursion warm-up (sum of digits, palindrome, fast power, subsets) + math (gcd, mod, primes) |
-| Thu Oct 22 | Daytime: bit manipulation ladder from `bit.md` + one 90-min mixed timed mock (4 problems). Light by evening. **Contest 2 at 9:30 pm** |
+| Tue Oct 20 (Navratri) | ~2 focused hours: hashing (HashMap/HashSet, frequency count, first repeating, pair with sum K, subarray with sum 0 via prefix + set). Park RotatedSortedArraySearch (binary search is not on the list) |
+| Wed Oct 21 | 2-5 pm: modular arithmetic (`(a+b)%m`, `(a*b)%m` in `long`, negative mod fix, fast power mod) + GCD (Euclid, gcd of array, lcm). 6-8:30 pm: count sort + comparator problems (sort by frequency, largest number) |
+| Thu Oct 22 | Morning: merge sort (+ count inversions) and quick sort (partition). Afternoon: one 90-min mixed timed mock (4 problems). Rest from 7 pm. **Contest 2 at 9:30 pm** |
 | Fri Oct 23 | After Scalar class: review contest misses, re-solve the weakest topic out loud |
 | Sat Oct 24 | After Coding Ninjas (2 pm): 60-min interview-mode mock, mixed topics, explained aloud. Early sleep |
 | Sun Oct 25 | **Mock interview (tentative, time TBD)**. Light warm-up only |
