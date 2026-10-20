@@ -70,7 +70,7 @@ Steps, with Ubuntu commands (on Amazon Linux 2023 use `dnf` instead of `apt`; it
 
 ## 3. Windows version (Oct 20)
 
-Same app, same three tiers, different tools.
+Same app, same three tiers, different tools. Full step-by-step walkthrough: `02_single_instance_windows.md`.
 
 1. **Launch:** a **Windows Server** AMI. Bigger and pricier than Linux: the Windows licence is in the hourly rate.
 2. **Security group:** `3389` (RDP) from **My IP** only, `80`/`443` from anywhere, no `3306`.
