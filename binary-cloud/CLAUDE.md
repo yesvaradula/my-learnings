@@ -3,6 +3,7 @@
 Cloud course notes, one subfolder per provider. Class: Mon-Fri, 9:30-11:00 pm IST.
 
 ## Layout
+- `aws/`: numbered notes, same format as `gcp/`.
 - `gcp/`: numbered notes, `NN_topic.md`, each with intuition, steps, gotchas, cross-cloud table, FDE angle, self-test.
 
 ## Conventions
@@ -13,6 +14,7 @@ Cloud course notes, one subfolder per provider. Class: Mon-Fri, 9:30-11:00 pm IS
 ## Progress
 | Note | Topic | Status |
 |------|-------|--------|
+| aws/01_single_instance_app.md | UI + API + MySQL on one EC2 instance, Linux (Oct 19) and Windows (Oct 20) | Notes saved Oct 20 (from his class summary, joined Oct 20 class late); self-test open |
 | gcp/01_account.md | Account, billing, project, budget, gcloud | Done Oct 15: project `learning-sandbox-511709`, budget Rs 500, `gcloud` OK, trial Rs 28,000 until Dec 24 2026 |
 
 ## Planned
