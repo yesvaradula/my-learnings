@@ -129,6 +129,7 @@ Reference notes (not problems): `revision-cheatsheet.md` (2D arrays, bits, subar
 | 44 | Find in sorted matrix (repeat of #27, practice contest) | Staircase from top-right | Contest brute force O(N·M) passes (≤ 10⁶ cells) but ignores sortedness; interview answer is O(N+M). On a match `c--`, 1-indexed. 13/13 PASS with `solveBrute` cross-check. |
 | 46 | Rotate matrix 90° clockwise, in place | Transpose + reverse each row | Transpose from `j = i + 1` (`j = 0` double-swaps). Fresh `left = 0, right = n - 1` per row. `while (x < y)`. 7/7 + 500 random cross-check (Oct 18), after three bug rounds Oct 16-17. |
 | 48 | First repeating element | Count map + second pass over the **array** | Answer is the repeat whose first occurrence is earliest (`[10,5,3,4,3,5,6]` -> 5, not 3). Value is the key; `getOrDefault(x, 0) + 1`. Loop `A` in pass 2, never the map. 14/14 + 2000 random (Oct 20), after 7 bug rounds. |
+| 49 | Pair with sum K | Complement in a set, check before add | `need = (long) K - A[i]`: cast **before** subtracting (`long need = K - A[i]` still overflows). `HashSet<Long>` so the lookup matches. Right first try for normal input. 15/15 + 2000 random (Oct 20). |
 | 47 | Spiral order (n x m) | Four shrinking walls | Separate `j` walks, walls move one step. `while (top <= bottom && left <= right)`; `if` guards on bottom row and left column (else a leftover row/column is re-read). Row first, column second. 9/9 + 500 random (Oct 18). |
 
 ## Parked practice (not started yet)

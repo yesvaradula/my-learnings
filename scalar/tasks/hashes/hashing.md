@@ -373,7 +373,7 @@ static int[] distinctInWindows(int[] A, int B) {
 | 2 | First repeating, one pass from the right | Set, scan right to left (B) | |
 | 3 | First non-repeating element | Count + second pass (A) | |
 | 4 | Count distinct elements | Set size | |
-| 5 | Pair with sum K exists | Complement lookup (C) | |
+| 5 | Pair with sum K exists | Complement lookup (C) | Solved Oct 20 (first try; `long` fix for overflow) |
 | 6 | Count pairs with sum K | Complement + counts (C) | |
 | 7 | Subarray with sum 0 exists | Prefix + set, seed 0 (D) | |
 | 8 | Count subarrays with sum K | Prefix + count map, seed `0 -> 1` (D) | |
