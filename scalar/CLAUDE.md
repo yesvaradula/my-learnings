@@ -4,7 +4,7 @@ Language: **Java**. Platform: Scaler (InterviewBit-style problems).
 Format: timed coding contests, usually 4 problems in 90 minutes.
 
 Paths below are from the repo root. Solutions: `scalar/tasks/{arrays,strings}/{basics,intermediate,advanced}/` and `scalar/tasks/bs/`. Write-ups: `scalar/problems/`.
-Known compile failure: `scalar/tasks/arrays/advanced/MinimumSwaps.java` (`return 0` in `void main`, #31). No `package` lines; compile each file alone (`javac File.java`).
+Known compile failures: `scalar/tasks/arrays/advanced/MinimumSwaps.java` (`return 0` in `void main`, #31); `scalar/tasks/bits/BitBasics.java` (unfinished skeleton: method signatures inside `main`, has a `package` line). No `package` lines; compile each file alone (`javac File.java`).
 Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `FindMIssingNumber` → `arrays/intermediate/FirstMissingPositive` (#26); `WaterTrap (2)` deleted (wrong).
 
 ## Contests
