@@ -18,6 +18,9 @@ Cloud course notes, one subfolder per provider. Class: Mon-Fri, 9:30-11:00 pm IS
 | aws/02_single_instance_windows.md | Same app on Windows Server: RDP, IIS + URL Rewrite/ARR, waitress, NSSM service, two firewalls | Notes saved Oct 20 (from his class summary); self-test open |
 | gcp/01_account.md | Account, billing, project, budget, gcloud | Done Oct 15: project `learning-sandbox-511709`, budget Rs 500, `gcloud` OK, trial Rs 28,000 until Dec 24 2026 |
 
+## Hands-on labs
+- `aws/lab/gita-quotes/`: Gita Quotes app (Flask API + MySQL + static UI, config from env vars; routes smoke-tested locally Oct 21) with a README for both labs. **Linux lab: Sat Oct 24, 3-5:30 pm. Windows lab: Sun Oct 25, 3-5:30 pm** (after Coding Ninjas). Done when the page works from his laptop; terminate after each lab. Get the files onto Linux with `git clone` (keeps LF line endings for the systemd/nginx files).
+
 ## Planned
 `02_iam.md`, `03_compute.md`, `04_billing_guardrails.md`.
 
