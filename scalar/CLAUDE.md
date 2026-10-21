@@ -131,6 +131,7 @@ Reference notes (not problems): `revision-cheatsheet.md` (2D arrays, bits, subar
 | 48 | First repeating element | Count map + second pass over the **array** | Answer is the repeat whose first occurrence is earliest (`[10,5,3,4,3,5,6]` -> 5, not 3). Value is the key; `getOrDefault(x, 0) + 1`. Loop `A` in pass 2, never the map. 14/14 + 2000 random (Oct 20), after 7 bug rounds. |
 | 49 | Pair with sum K | Complement in a set, check before add | `need = (long) K - A[i]`: cast **before** subtracting (`long need = K - A[i]` still overflows). `HashSet<Long>` so the lookup matches. Right first try for normal input. 15/15 + 2000 random (Oct 20). |
 | 50 | Subarray with 0 sum | Running prefix sum + set | Equal prefixes -> zero between. Prefix 0 itself: seed the set with 0 (or check `sum == 0`). `long sum = 0`, loop from 0 (starting at `A[0]`/`i = 1` skipped the first prefix). Don't build the prefix in the input array. 15/15 + 2000 random (Oct 21). |
+| 51 | Sum of digits (recursive) | Last digit + recurse on the rest | `return A % 10 + solve(A / 10)`, base `A <= 9`. No shared running sum: build from return values. TC/SC O(log10 A) (stack). 11/11 + 2000 random (Oct 21). First recursion problem. |
 | 47 | Spiral order (n x m) | Four shrinking walls | Separate `j` walks, walls move one step. `while (top <= bottom && left <= right)`; `if` guards on bottom row and left column (else a leftover row/column is re-read). Row first, column second. 9/9 + 500 random (Oct 18). |
 
 ## Parked practice (not started yet)
