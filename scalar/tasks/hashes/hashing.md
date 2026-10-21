@@ -375,7 +375,7 @@ static int[] distinctInWindows(int[] A, int B) {
 | 4 | Count distinct elements | Set size | |
 | 5 | Pair with sum K exists | Complement lookup (C) | Solved Oct 20 (first try; `long` fix for overflow) |
 | 6 | Count pairs with sum K | Complement + counts (C) | |
-| 7 | Subarray with sum 0 exists | Prefix + set, seed 0 (D) | |
+| 7 | Subarray with sum 0 exists | Prefix + set, seed 0 (D) | Solved Oct 21 (`sum == 0` check instead of the seed; `long`, loop from 0) |
 | 8 | Count subarrays with sum K | Prefix + count map, seed `0 -> 1` (D) | |
 | 9 | Longest subarray with sum 0 | Prefix + first index, seed `0 -> -1` (D) | |
 | 10 | Longest consecutive sequence | Set lookup, start only at run heads (E) | |
