@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gita Quotes</title>
+  <style>
+    :root { --bg: #fbf7ef; --card: #ffffff; --ink: #2b2118; --muted: #7a6a58; --accent: #c2410c; --line: #e8dfd1; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1c1712; --card: #26201a; --ink: #f3ece2; --muted: #b3a48f; --accent: #fb923c; --line: #3a3128; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 Georgia, "Times New Roman", serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+    h1 { margin: 0 0 4px; font-size: 28px; }
+    .sub { color: var(--muted); margin: 0 0 24px; font-family: system-ui, sans-serif; font-size: 14px; }
+    .status { font-family: system-ui, sans-serif; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .status b { color: var(--accent); }
+    form, .quote { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px; }
+    form { display: grid; gap: 10px; margin-bottom: 28px; }
+    label { font-family: system-ui, sans-serif; font-size: 13px; color: var(--muted); }
+    input, textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; }
+    textarea { min-height: 70px; resize: vertical; }
+    button { justify-self: start; padding: 8px 18px; border: 0; border-radius: 6px; background: var(--accent); color: #fff; font: 600 14px system-ui, sans-serif; cursor: pointer; }
+    .list { display: grid; gap: 12px; }
+    .verse { font: 600 13px system-ui, sans-serif; color: var(--accent); }
+    .text { font-size: 18px; margin: 4px 0; }
+    .meaning { color: var(--muted); margin: 0; }
+    .error { color: #b91c1c; font-family: system-ui, sans-serif; font-size: 14px; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Gita Quotes</h1>
+  <p class="sub">UI (this page) &rarr; /api (Python) &rarr; MySQL, all on one EC2 instance.</p>
+  <div class="status" id="status">Checking API&hellip;</div>
+
+  <form id="form">
+    <div><label for="verse">Verse</label><input id="verse" placeholder="2.47" maxlength="20" required></div>
+    <div><label for="text">Sloka or line</label><textarea id="text" maxlength="1000" required></textarea></div>
+    <div><label for="meaning">Meaning (in simple words)</label><textarea id="meaning" maxlength="1000"></textarea></div>
+    <button type="submit">Save quote</button>
+    <div class="error" id="formError"></div>
+  </form>
+
+  <div class="list" id="list"></div>
+</main>
+
+<script>
+  const statusEl = document.getElementById('status');
+  const listEl = document.getElementById('list');
+  const formError = document.getElementById('formError');
+
+  async function checkHealth() {
+    try {
+      const res = await fetch('/api/health');
+      const data = await res.json();
+      statusEl.innerHTML = 'API: <b>' + data.status + '</b> &middot; DB: <b>' + escapeHtml(data.db) + '</b>';
+    } catch (e) {
+      statusEl.innerHTML = 'API: <b>unreachable</b> (check the web server proxy and that the API process is running)';
+    }
+  }
+
+  async function loadQuotes() {
+    try {
+      const res = await fetch('/api/quotes');
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const quotes = await res.json();
+      listEl.innerHTML = quotes.length ? '' : '<p class="meaning">No quotes yet. Add the first one.</p>';
+      for (const q of quotes) {
+        const div = document.createElement('div');
+        div.className = 'quote';
+        div.innerHTML = '<div class="verse">Gita ' + escapeHtml(q.verse) + '</div>'
+          + '<p class="text">' + escapeHtml(q.text) + '</p>'
+          + (q.meaning ? '<p class="meaning">' + escapeHtml(q.meaning) + '</p>' : '');
+        listEl.appendChild(div);
+      }
+    } catch (e) {
+      listEl.innerHTML = '<p class="error">Could not load quotes: ' + escapeHtml(e.message) + '</p>';
+    }
+  }
+
+  document.getElementById('form').addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    formError.textContent = '';
+    const body = {
+      verse: document.getElementById('verse').value,
+      text: document.getElementById('text').value,
+      meaning: document.getElementById('meaning').value,
+    };
+    const res = await fetch('/api/quotes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      formError.textContent = data.error || ('Save failed: HTTP ' + res.status);
+      return;
+    }
+    ev.target.reset();
+    loadQuotes();
+  });
+
+  // Quotes are user input: escape before putting them into HTML
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+
+  checkHealth();
+  loadQuotes();
+</script>
+</body>
+</html>

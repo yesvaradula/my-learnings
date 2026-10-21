@@ -1,0 +1,18 @@
+# Linux: copy to /etc/systemd/system/gita-api.service, then:
+#   sudo systemctl daemon-reload
+#   sudo systemctl enable --now gita-api
+#   sudo systemctl status gita-api        (logs: journalctl -u gita-api -f)
+# Put the DB password in /etc/gita-api.env (chmod 600), one line: DB_PASSWORD=...
+[Unit]
+Description=Gita Quotes API (gunicorn)
+After=network.target mysql.service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/opt/gita-quotes
+EnvironmentFile=/etc/gita-api.env
+ExecStart=/opt/gita-quotes/venv/bin/gunicorn -w 2 -b 127.0.0.1:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

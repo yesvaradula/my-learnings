@@ -1,0 +1,4 @@
+flask>=3.0,<4
+pymysql>=1.1,<2
+gunicorn>=22; sys_platform != "win32"
+waitress>=3.0; sys_platform == "win32"
