@@ -4,45 +4,39 @@
 # Run once on any laptop, from the repo root:
 #   powershell -NoProfile -ExecutionPolicy Bypass -File plans\reminders\setup-reminders.ps1
 #
+# Each task runs popup.ps1 from this folder, which picks a fresh line every time.
+# Popup text lives in popup.ps1 (edit it freely); this file only holds the schedule.
+# Re-run this script if the repo folder moves, since the tasks store popup.ps1's full path.
+#
 # Popups fire on battery and on charger. They cannot fire while the laptop is asleep.
 # One-time reminders whose time has already passed are skipped.
 # Times are local (IST). Keep this file in sync with the schedule in CLAUDE.md.
 
 $weekly = @(
-    @{ Name = 'Scaler class';          At = '06:45'; Days = 'Monday', 'Wednesday', 'Friday';
-       Title = 'Class reminder'; Text = 'Scaler class starts at 7:00 am. Water, notebook, Java ready. Good morning, Babe!' },
-    @{ Name = 'Coding Ninjas class';   At = '10:45'; Days = 'Saturday', 'Sunday';
-       Title = 'Class reminder'; Text = 'Coding Ninjas class (AI, LLMs, RAG, Agents) starts at 11:00 am. Wrap up and join on time, Babe!' },
-    @{ Name = 'Binary Cloud class';    At = '21:15'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday';
-       Title = 'Class reminder'; Text = 'Binary Cloud class starts at 9:30 pm. Save your work and join now, Babe!' },
-    @{ Name = 'Leave for office';      At = '09:15'; Days = 'Wednesday', 'Thursday';
-       Title = 'Work reminder'; Text = 'Office day, Babe: leave by 9:30 am (1.5 hour commute). Laptop, charger, ID card.' },
-    @{ Name = 'Keka login (office)';   At = '10:55'; Days = 'Wednesday', 'Thursday';
-       Title = 'Work reminder'; Text = 'Office starts at 11:00 am. Log in on Keka, Babe.' },
-    @{ Name = 'Keka logout (office)';  At = '19:00'; Days = 'Wednesday', 'Thursday';
-       Title = 'Work reminder'; Text = '7:00 pm: log out on Keka and start home, Babe.' },
-    @{ Name = 'Keka login (WFH)';      At = '10:55'; Days = 'Monday', 'Tuesday', 'Friday';
-       Title = 'Work reminder'; Text = 'Work from home starts at 11:00 am. Log in on Keka, Babe.' },
-    @{ Name = 'Keka logout (WFH)';     At = '20:00'; Days = 'Monday', 'Tuesday', 'Friday';
-       Title = 'Work reminder'; Text = '8:00 pm: log out on Keka, Babe. Eat, then Binary Cloud at 9:30.' },
-    @{ Name = 'Standup call';          At = '20:25'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday';
-       Title = 'Work reminder'; Text = 'Standup call at 8:30 pm (20-30 min). Headphones on, updates ready, Babe.' }
+    @{ Name = 'Scaler class';          Kind = 'scaler';             At = '06:45'; Days = 'Monday', 'Wednesday', 'Friday' },
+    @{ Name = 'Coding Ninjas class';   Kind = 'ninjas';             At = '10:45'; Days = 'Saturday', 'Sunday' },
+    @{ Name = 'Binary Cloud class';    Kind = 'cloud';              At = '21:15'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' },
+    @{ Name = 'Leave for office';      Kind = 'leave-office';       At = '09:15'; Days = 'Wednesday', 'Thursday' },
+    @{ Name = 'Keka login (office)';   Kind = 'keka-login-office';  At = '10:55'; Days = 'Wednesday', 'Thursday' },
+    @{ Name = 'Keka logout (office)';  Kind = 'keka-logout-office'; At = '19:00'; Days = 'Wednesday', 'Thursday' },
+    @{ Name = 'Keka login (WFH)';      Kind = 'keka-login-wfh';     At = '10:55'; Days = 'Monday', 'Tuesday', 'Friday' },
+    @{ Name = 'Keka logout (WFH)';     Kind = 'keka-logout-wfh';    At = '20:00'; Days = 'Monday', 'Tuesday', 'Friday' },
+    @{ Name = 'Standup call';          Kind = 'standup';            At = '20:25'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' }
 )
 
 $once = @(
-    @{ Name = 'Scaler Contest 2';      At = '2026-10-23 11:30';
-       Title = 'Class reminder'; Text = 'Scaler Contest 2 starts at 12:00 noon. Water, laptop charged, Java ready, phone away. You got this, Babe!' },
-    @{ Name = 'Scaler Mock Interview'; At = '2026-10-28 22:30';
-       Title = 'Class reminder'; Text = 'Scaler mock interview at 11:00 pm. Water, camera and mic checked, Java ready. Restate, example, brute force, improve, code, test, TC/SC. You got this, Babe!' }
+    @{ Name = 'Scaler Contest 2';      Kind = 'contest'; At = '2026-10-23 11:30' },
+    @{ Name = 'Scaler Mock Interview'; Kind = 'mock';    At = '2026-10-28 22:30' }
 )
+
+$popup = Join-Path $PSScriptRoot 'popup.ps1'
 
 # Default task settings refuse to start on battery (error 0x800710E0); allow it explicitly.
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
 
 function Register-Reminder($r, $trigger) {
-    $command = "(New-Object -ComObject WScript.Shell).Popup('$($r.Text)', 0, '$($r.Title)', 64)"
     $action = New-ScheduledTaskAction -Execute 'powershell.exe' `
-        -Argument "-NoProfile -WindowStyle Hidden -Command `"$command`""
+        -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$popup`" -Kind $($r.Kind)"
     Register-ScheduledTask -TaskName "Reminder - $($r.Name)" -Action $action -Trigger $trigger `
         -Settings $settings -Force | Out-Null
     Write-Host "OK    Reminder - $($r.Name)"
