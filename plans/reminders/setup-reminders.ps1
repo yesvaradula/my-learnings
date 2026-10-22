@@ -1,4 +1,4 @@
-# Creates (or replaces) all "Reminder - ..." popups as Windows scheduled tasks.
+﻿# Creates (or replaces) all "Reminder - ..." popups as Windows scheduled tasks.
 # Safe to run again: each task is re-registered with -Force, nothing is duplicated.
 #
 # Run once on any laptop, from the repo root:
@@ -10,11 +10,11 @@
 
 $weekly = @(
     @{ Name = 'Scaler class';          At = '06:45'; Days = 'Monday', 'Wednesday', 'Friday';
-       Title = 'Class reminder'; Text = 'Scaler class starts at 7:00 am. Water, notebook, Java ready. Good morning, Krishna!' },
+       Title = 'Class reminder'; Text = 'Scaler class starts at 7:00 am. Water, notebook, Java ready. Good morning, Babe!' },
     @{ Name = 'Coding Ninjas class';   At = '10:45'; Days = 'Saturday', 'Sunday';
        Title = 'Class reminder'; Text = 'Coding Ninjas class (AI, LLMs, RAG, Agents) starts at 11:00 am. Wrap up and join on time!' },
     @{ Name = 'Binary Cloud class';    At = '21:15'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday';
-       Title = 'Class reminder'; Text = 'Binary Cloud class starts at 9:30 pm. Save your work and join now, Krishna!' },
+       Title = 'Class reminder'; Text = 'Binary Cloud class starts at 9:30 pm. Save your work and join now, Babe!' },
     @{ Name = 'Leave for office';      At = '09:15'; Days = 'Wednesday', 'Thursday';
        Title = 'Work reminder'; Text = 'Office day: leave by 9:30 am (1.5 hour commute). Laptop, charger, ID card.' },
     @{ Name = 'Keka login (office)';   At = '10:55'; Days = 'Wednesday', 'Thursday';
