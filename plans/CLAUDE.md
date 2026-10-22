@@ -10,6 +10,7 @@ Everything here ties back to the main goal: **Forward Deployed Engineer (FDE)**:
 |--------|---------|--------|
 | `ideas/` | Product / project ideas worth building, one subfolder per idea | active |
 | `ideas/5amclub/` | Web app that encourages people to wake up at 5 AM (PWA on GCP) | v0 plan drafted: `00_idea.md`, open questions in section 15 |
+| `reminders/` | `setup-reminders.ps1`: creates all "Reminder - ..." Windows popups (classes, Keka, standup, contest, mock) on any laptop; safe to re-run | active; update it whenever a reminder changes |
 
 Planned, not created yet: `roadmaps/` (e.g. the FDE roadmap built around his weekly schedule) and `goals/` (milestones and trackers).
 
@@ -18,7 +19,7 @@ Planned, not created yet: `roadmaps/` (e.g. the FDE roadmap built around his wee
 - A plan doc has: vision, user/problem, MVP vs later, stack, risks, roadmap, **open questions for Sai**. Mark guesses as **[assumption]** until he confirms.
 - Product ideas should double as **FDE portfolio proof**: deployed URL, README, CI/CD, short architecture doc, demo script.
 - Prefer his stack (React, Angular, Node.js, Java) and the cloud he is learning (GCP first, see `binary-cloud/`).
-- Schedule-aware: build in his free windows (weekday 2 pm-9:30 pm, Tue/Thu after 9:30 am, weekend afternoons/evenings); never plan over Scalar, Coding Ninjas or Binary Cloud classes.
+- Schedule-aware: build in his free windows (see the schedule in the root `CLAUDE.md`; it changed with office hours from Oct 22); never plan over Scalar, Coding Ninjas, Binary Cloud, office hours or the 8:30 pm standup.
 - Be honest about risk and sleep: no plan that silently assumes he can add hours he does not have.
 - Saved notes stay emoji-free; chat can be as playful as ever.
 
