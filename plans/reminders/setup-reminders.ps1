@@ -12,28 +12,28 @@ $weekly = @(
     @{ Name = 'Scaler class';          At = '06:45'; Days = 'Monday', 'Wednesday', 'Friday';
        Title = 'Class reminder'; Text = 'Scaler class starts at 7:00 am. Water, notebook, Java ready. Good morning, Babe!' },
     @{ Name = 'Coding Ninjas class';   At = '10:45'; Days = 'Saturday', 'Sunday';
-       Title = 'Class reminder'; Text = 'Coding Ninjas class (AI, LLMs, RAG, Agents) starts at 11:00 am. Wrap up and join on time!' },
+       Title = 'Class reminder'; Text = 'Coding Ninjas class (AI, LLMs, RAG, Agents) starts at 11:00 am. Wrap up and join on time, Babe!' },
     @{ Name = 'Binary Cloud class';    At = '21:15'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday';
        Title = 'Class reminder'; Text = 'Binary Cloud class starts at 9:30 pm. Save your work and join now, Babe!' },
     @{ Name = 'Leave for office';      At = '09:15'; Days = 'Wednesday', 'Thursday';
-       Title = 'Work reminder'; Text = 'Office day: leave by 9:30 am (1.5 hour commute). Laptop, charger, ID card.' },
+       Title = 'Work reminder'; Text = 'Office day, Babe: leave by 9:30 am (1.5 hour commute). Laptop, charger, ID card.' },
     @{ Name = 'Keka login (office)';   At = '10:55'; Days = 'Wednesday', 'Thursday';
-       Title = 'Work reminder'; Text = 'Office starts at 11:00 am. Log in on Keka.' },
+       Title = 'Work reminder'; Text = 'Office starts at 11:00 am. Log in on Keka, Babe.' },
     @{ Name = 'Keka logout (office)';  At = '19:00'; Days = 'Wednesday', 'Thursday';
-       Title = 'Work reminder'; Text = '7:00 pm: log out on Keka and start home.' },
+       Title = 'Work reminder'; Text = '7:00 pm: log out on Keka and start home, Babe.' },
     @{ Name = 'Keka login (WFH)';      At = '10:55'; Days = 'Monday', 'Tuesday', 'Friday';
-       Title = 'Work reminder'; Text = 'Work from home starts at 11:00 am. Log in on Keka.' },
+       Title = 'Work reminder'; Text = 'Work from home starts at 11:00 am. Log in on Keka, Babe.' },
     @{ Name = 'Keka logout (WFH)';     At = '20:00'; Days = 'Monday', 'Tuesday', 'Friday';
-       Title = 'Work reminder'; Text = '8:00 pm: log out on Keka. Eat, then Binary Cloud at 9:30.' },
+       Title = 'Work reminder'; Text = '8:00 pm: log out on Keka, Babe. Eat, then Binary Cloud at 9:30.' },
     @{ Name = 'Standup call';          At = '20:25'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday';
-       Title = 'Work reminder'; Text = 'Standup call at 8:30 pm (20-30 min). Headphones on, updates ready.' }
+       Title = 'Work reminder'; Text = 'Standup call at 8:30 pm (20-30 min). Headphones on, updates ready, Babe.' }
 )
 
 $once = @(
     @{ Name = 'Scaler Contest 2';      At = '2026-10-23 11:30';
-       Title = 'Class reminder'; Text = 'Scaler Contest 2 starts at 12:00 noon. Water, laptop charged, Java ready, phone away.' },
+       Title = 'Class reminder'; Text = 'Scaler Contest 2 starts at 12:00 noon. Water, laptop charged, Java ready, phone away. You got this, Babe!' },
     @{ Name = 'Scaler Mock Interview'; At = '2026-10-28 22:30';
-       Title = 'Class reminder'; Text = 'Scaler mock interview at 11:00 pm. Water, camera and mic checked, Java ready. Restate, example, brute force, improve, code, test, TC/SC.' }
+       Title = 'Class reminder'; Text = 'Scaler mock interview at 11:00 pm. Water, camera and mic checked, Java ready. Restate, example, brute force, improve, code, test, TC/SC. You got this, Babe!' }
 )
 
 # Default task settings refuse to start on battery (error 0x800710E0); allow it explicitly.
