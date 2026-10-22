@@ -133,7 +133,7 @@ $reminders = @{
     }
     'contest' = @{
         Title = 'Class reminder'
-        Fact  = 'Scaler Contest 2 starts at 12:00 noon. Water, laptop charged, Java ready, phone away.'
+        Fact  = 'Scaler Contest 2 starts at 10:00 am. Water, laptop charged, Java ready, phone away.'
         Lines = @(
             "You got this, Babe!",
             "Read every problem twice. Brute force first. Then show off.",

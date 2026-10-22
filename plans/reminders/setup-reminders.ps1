@@ -23,7 +23,7 @@ $weekly = @(
 )
 
 $once = @(
-    @{ Name = 'Scaler Contest 2';      Kind = 'contest'; At = '2026-10-23 11:30' },
+    @{ Name = 'Scaler Contest 2';      Kind = 'contest'; At = '2026-10-27 09:30' },
     @{ Name = 'Scaler Mock Interview'; Kind = 'mock';    At = '2026-10-28 22:30' }
 )
 

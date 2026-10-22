@@ -12,7 +12,7 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 | # | Date | Time | Topics | Result |
 |---|------|------|--------|--------|
 | 1 | 2026-10-07 | 7:00–8:30 am | Arrays, 2D Arrays, Bit Manipulation, Recursion, Math, Hashing, Sorting | 1/4 solved (Trapping Rain Water) |
-| 2 | **2026-10-23 (Fri), final** (told Oct 22; was Thu Oct 22 9:30 pm, Wed Oct 21, originally Oct 13) | 12:00 noon (no class clash) | Same topics, 4 new problems | Goal: solve all 4 |
+| 2 | **2026-10-27 (Tue), chosen** (told Oct 22 night: the contest is open Oct 22 - Dec 6, so he picked the date; was Fri Oct 23 noon, Thu Oct 22 9:30 pm, Wed Oct 21, originally Oct 13) | 10:00 am (WFH day, no class; may run past the 11:00 work start) | Same topics, 4 new problems | Goal: solve all 4. Doubles as the dress rehearsal for the Oct 28 mock |
 
 ### Contest 1: missed problems (review these)
 1. **Bitville XOR pairs**: for each query bit `b`, count pairs whose b-th bits differ.
@@ -48,12 +48,12 @@ Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 2
 | Tue Oct 20 (Navratri) | ~2 focused hours: hashing (HashMap/HashSet, frequency count, first repeating, pair with sum K, subarray with sum 0 via prefix + set). Park RotatedSortedArraySearch (binary search is not on the list) |
 | Wed Oct 21 | No Scalar class (none until Fri Oct 23). 7-7:45 am: subarray with sum 0 (carried over from Tue; he already sees it is prefix sum + set, not sliding window). 7:50-9:30 am: recursion basics (sum of digits, palindrome, base case + trust the call) + fast power. 2-5 pm: modular arithmetic (`(a+b)%m`, `(a*b)%m` in `long`, negative mod fix, fast power mod) + GCD (Euclid, gcd of array, lcm). 6-8:30 pm: count sort + comparator problems (sort by frequency, largest number). Fast power mod written **recursively** = first recursion rep |
 | Thu Oct 22 | (Re-planned Oct 22 morning: contest moved to Fri noon, and office hours now apply, see the root `CLAUDE.md`. Office day: leave 9:30.) 7-9:15 GCD (Euclid, gcd of array), `tasks/math/GCD.java`. Daytime flexible block (~2 h): count sort + comparators. 8:30-9:15 dinner, Binary Cloud live 9:30. Sleep by 11:30 |
-| Fri Oct 23 | WFH day. Block the calendar 11:45-1:30 for the contest. Scalar class 7-9:30 am (if running). 9:45-11:15 merge sort + quick sort partition, concept and one dry run each, no heavy coding. 11:15 eat, water. **Contest 2 at 12:00 noon.** Afternoon: note the misses while they are fresh |
-| Sat Oct 24 | Coding Ninjas 11-2. **Linux lab 3-5:30.** Evening: upsolve contest misses; merge sort / quick sort coded from a blank file with test loops |
+| Fri Oct 23 | (Re-planned Oct 22 night: contest moved to Tue Oct 27 10 am; standup 8:30-9 pm on every working day.) WFH. Scalar class 7-9:30. 9:30-11 count sort (`tasks/sorts/CountSort.java`) + one comparator problem (sort by frequency or largest number). Daytime flexible block: merge sort concept + one dry run. 8-8:25 eat, standup 8:30, Binary Cloud 9:30 |
+| Sat Oct 24 | Coding Ninjas 11-2. **Linux lab 3-5:30.** Evening: merge sort + quick sort partition coded from a blank file with test loops |
 | Sun Oct 25 | Coding Ninjas 11-2. **Windows lab 3-5:30.** Evening: hashing ladder #8 count subarrays with sum K + #3 first non-repeating; recursion subsets |
-| Mon Oct 26 | Scalar class 7-9:30. 9:30-10:45 bits ladder from `bit.md` (count set bits incl. negatives, single number). Work 11-8. 8:15-9:15 finish `BitBasics.java` or spiral re-solve |
-| Tue Oct 27 | No class. 7-10:30: 60-min interview-mode mock explained aloud, then fix the gaps. Work 11-8. 8:15-9:15 one sorting + one hashing re-solve from a blank file |
-| Wed Oct 28 | Office day: Scalar class 7-9:30 overlaps leaving at 9:30 (leave on time, finish the class on the commute or the recording). Home ~8:30, eat, rest, light warm-up only. Skip the live Binary Cloud class. **Mock interview 11:00 pm** |
+| Mon Oct 26 | Scalar class 7-9:30. 9:30-10:45 bits ladder from `bit.md` (count set bits incl. negatives, single number). Work 11-8; flexible block: `gcd.md` tasks 2-3 (gcd of array, delete-one) + one more comparator problem. Standup 8:30, Binary Cloud 9:30. Sleep by 11:30 |
+| Tue Oct 27 | No class. 7-9:15 warm-up: one quick re-solve per topic (sorting, hashing, GCD/mod, bits) from a blank file, no new topics. 9:15 eat, water, phone away (popup 9:30). **Contest 2 at 10:00 am**; work starts 11 (Keka popup 10:55), finish the contest in the flexible block if it runs over. After work: note the misses. Standup 8:30. Evening: upsolve one miss, light review, sleep early |
+| Wed Oct 28 | Office day (contest done the day before, so this is mock-only): Scalar class 7-9:30 overlaps leaving at 9:30 (leave on time, finish the class on the commute or the recording). Home ~8:30, eat, rest, light warm-up only. Skip the live Binary Cloud class. **Mock interview 11:00 pm** |
 
 Interview script for every problem: restate, walk an example, brute force, improve, code, edge-case test loop, state TC & SC unprompted.
 

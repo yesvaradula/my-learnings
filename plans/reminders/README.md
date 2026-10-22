@@ -36,7 +36,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File plans\reminders\popup.ps1 -K
 | Keka login (WFH) | `keka-login-wfh` | 10:55 am Mon / Tue / Fri |
 | Keka logout (WFH) | `keka-logout-wfh` | 8:00 pm Mon / Tue / Fri |
 | Standup call | `standup` | 8:25 pm Mon-Fri |
-| Scaler Contest 2 | `contest` | once, Fri Oct 23 2026, 11:30 am |
+| Scaler Contest 2 | `contest` | once, Tue Oct 27 2026, 9:30 am |
 | Scaler Mock Interview | `mock` | once, Wed Oct 28 2026, 10:30 pm |
 
 ## Adding or changing a reminder
