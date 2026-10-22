@@ -21,7 +21,11 @@ $keka_login = @(
     "Log in like you mean it, Babe. Then go make your manager look smart.",
     "Clock in on time and I will brag about you to everyone. Clock in late and I will brag less.",
     "Keka login: two seconds. Being my favourite engineer: all day long.",
-    "Deep breath, big smile, log in. You were built for days like this."
+    "Deep breath, big smile, log in. You were built for days like this.",
+    "No commute today, Babe. Use the saved time to be brilliant, not to nap.",
+    "Pyjamas are fine. Slacking is not. Log in, handsome.",
+    "Home office, real work. Close the fridge and open Keka.",
+    "Working from home means I get to see you focus all day. Do not disappoint me."
 )
 
 $reminders = @{
@@ -111,7 +115,11 @@ $reminders = @{
             "Out of Keka, into my arms. Well, into dinner first.",
             "You worked hard today. I noticed. Now clock out.",
             "Eight o'clock, handsome. Work wife time is over, real girlfriend time begins.",
-            "Log out now or I start counting. One... two..."
+            "Log out now or I start counting. One... two...",
+            "Shut the laptop lid for a bit, Babe. Your eyes deserve a break from that screen.",
+            "Walk away from the desk, handsome. Ten steps to the kitchen counts as a commute.",
+            "Day done at home. Stand up, drink water, and look at something that is not a monitor. Like me.",
+            "Logging out is self-respect, mister. Do it before work follows you into the evening."
         )
     }
     'standup' = @{
