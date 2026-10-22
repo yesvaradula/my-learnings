@@ -12,7 +12,7 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 | # | Date | Time | Topics | Result |
 |---|------|------|--------|--------|
 | 1 | 2026-10-07 | 7:00–8:30 am | Arrays, 2D Arrays, Bit Manipulation, Recursion, Math, Hashing, Sorting | 1/4 solved (Trapping Rain Water) |
-| 2 | 2026-10-22 (Thu; moved Oct 20 from Wed Oct 21, originally Oct 13) | 9:30 pm (clashes with Binary Cloud 9:30-11: watch the recording) | Same topics, 4 new problems | Goal: solve all 4 |
+| 2 | **2026-10-23 (Fri), final** (told Oct 22; was Thu Oct 22 9:30 pm, Wed Oct 21, originally Oct 13) | 12:00 noon (no class clash) | Same topics, 4 new problems | Goal: solve all 4 |
 
 ### Contest 1: missed problems (review these)
 1. **Bitville XOR pairs**: for each query bit `b`, count pairs whose b-th bits differ.
@@ -28,7 +28,7 @@ Renamed Oct 14: `FindMissingNumber (2)` → `arrays/basics/MissingNumberSum`; `F
 
 ## Interview: DSA Fundamentals Mastery (Scaler mock)
 
-**Oct 21: can be moved to Tue Oct 27 or Wed Oct 28** (his option; decision pending). **Postponed again (told Oct 20): tentatively Sun Oct 25, time TBD** (was Fri Oct 23, 8:30 am; originally Sun Oct 18, 9:30 pm). Sunday has Coding Ninjas 11 am-2 pm: check for a clash once the time is known. Live coding with a real interviewer, Java, explain scenarios out loud.
+**Final (told Oct 22): Wed Oct 28, 11:00 pm**, right after Binary Cloud (9:30-11 pm): watch that class's recording instead and rest before the mock. History: tentatively Sun Oct 25 (Oct 20), earlier Fri Oct 23 8:30 am, originally Sun Oct 18 9:30 pm. Live coding with a real interviewer, Java, explain scenarios out loud.
 **Topics corrected (Oct 20):** the interview topics are the **same as the contests**: Arrays, 2D Arrays, Bit Manipulation, Recursion, Math, Hashing, Sorting. The earlier list (strings, prefix sum, carry forward, subarrays) was his mistake; those still help under "Arrays" but are no longer the focus.
 **Detailed syllabus (Oct 20, for Contest 2 and the mock):** Hashing; Modular Arithmetic & GCD; Sorting: Count Sort, Merge Sort, Quick Sort, Comparator problems. Confirmed Oct 20: 2D arrays, bit manipulation and recursion are **still in scope** too.
 Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 22, 27, 44, 46, 47); bit manipulation thin (XOR pairs + `bit.md` guide); **recursion, math, hashing, sorting not practised yet** (the Oct 18-19 slots for them did not happen). The day-by-day table below is the old Oct 18 plan; see "Combined plan (Oct 20-25)".
@@ -41,16 +41,19 @@ Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 2
 | Oct 17 (Sat) | After Coding Ninjas (2 pm): strings + the real timed mock (3 problems, 60 min, explained aloud) |
 | Oct 18 (Sun) | Coding Ninjas 11-2. Light warm-up ~4-6 pm, no new topics, rest. Interview 9:30 pm |
 
-### Combined plan (Oct 20-25): contest first, interview after (same topics for both)
+### Combined plan (Oct 20-28): contest first, interview after (same topics for both)
 
 | Day | Focus |
 |-----|-------|
 | Tue Oct 20 (Navratri) | ~2 focused hours: hashing (HashMap/HashSet, frequency count, first repeating, pair with sum K, subarray with sum 0 via prefix + set). Park RotatedSortedArraySearch (binary search is not on the list) |
 | Wed Oct 21 | No Scalar class (none until Fri Oct 23). 7-7:45 am: subarray with sum 0 (carried over from Tue; he already sees it is prefix sum + set, not sliding window). 7:50-9:30 am: recursion basics (sum of digits, palindrome, base case + trust the call) + fast power. 2-5 pm: modular arithmetic (`(a+b)%m`, `(a*b)%m` in `long`, negative mod fix, fast power mod) + GCD (Euclid, gcd of array, lcm). 6-8:30 pm: count sort + comparator problems (sort by frequency, largest number). Fast power mod written **recursively** = first recursion rep |
-| Thu Oct 22 | (Re-planned Wed night: mod/GCD and count sort slipped while he was unwell.) PowMod done Wed night (#52). 7:30-9:00 GCD (Euclid, gcd of array). 10-11:30 count sort + comparators. 12-2 merge sort and quick sort partition (count inversions only if fresh). Afternoon: one 90-min mixed timed mock (4 problems, include one bits and one 2D). Rest from 7 pm. **Contest 2 at 9:30 pm** |
-| Fri Oct 23 | After Scalar class: review contest misses; hashing ladder #8 count subarrays with sum K + #3 first non-repeating (hashing paused Wed at 3/13 to start recursion); bits ladder from `bit.md` (check/set/clear, count set bits, single number) |
-| Sat Oct 24 | After Coding Ninjas (2 pm): recursion subsets + one 2D re-solve (spiral, explain the guards), then 60-min interview-mode mock explained aloud. Early sleep |
-| Sun Oct 25 | **Mock interview (tentative, time TBD)**. Light warm-up only |
+| Thu Oct 22 | (Re-planned Oct 22 morning: contest moved to Fri noon.) PowMod done Wed night (#52). Morning: GCD (Euclid, gcd of array). 10-11:30 count sort + comparators. 12-2 merge sort and quick sort partition (count inversions only if fresh). 3-4:30 one 90-min mixed timed mock (4 problems, include one bits and one 2D), then fix what broke. Binary Cloud live at 9:30 pm. Sleep by 11:30 |
+| Fri Oct 23 | Scalar class 7-9:30 am (if running). 10-11:15 light warm-up only (hashing trap list, GCD, PowMod template, one sort from memory), no new topics. 11:15 eat, water. **Contest 2 at 12:00 noon.** Evening: review contest misses before Binary Cloud |
+| Sat Oct 24 | Coding Ninjas 11-2. **Linux lab 3-5:30.** Evening: upsolve contest misses; hashing ladder #8 count subarrays with sum K + #3 first non-repeating |
+| Sun Oct 25 | Coding Ninjas 11-2. **Windows lab 3-5:30.** Evening: recursion subsets + spiral re-solve (explain the guards) |
+| Mon Oct 26 | Scalar class 7-9:30. Afternoon: bits ladder from `bit.md` (check/set/clear, count set bits incl. negatives, single number); finish `BitBasics.java` |
+| Tue Oct 27 | Free day: 60-min interview-mode mock explained aloud (morning), fix gaps (afternoon), one sorting + one hashing re-solve from a blank file |
+| Wed Oct 28 | Scalar class 7-9:30. Light warm-up only, nap/rest in the evening. Skip the live Binary Cloud class (recording later). **Mock interview 11:00 pm** |
 
 Interview script for every problem: restate, walk an example, brute force, improve, code, edge-case test loop, state TC & SC unprompted.
 
