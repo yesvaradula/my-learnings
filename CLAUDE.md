@@ -12,7 +12,8 @@ Personal learning repo for a full stack engineer (React, Angular, Node.js, Java)
   - **Scalar** (DSA, HLD, LLD, problem-solving skills): Mon / Wed / Fri, 7:00-9:30 am.
   - **Coding Ninjas** (AI, LLMs, RAG, Agents): Sat / Sun only, 11:00 am-2:00 pm.
   - **Binary Cloud** (cloud technologies, his cloud course): Mon-Fri evenings, 9:30-11:00 pm.
-  - Plan study blocks around these; weekday gaps (2 pm-9:30 pm Mon-Fri, after 9:30 am on Tue/Thu) and weekend afternoons/evenings are his free practice time.
+  - **Office (hybrid, from Oct 22):** work from home Mon / Tue / Fri, 11:00 am-8:00 pm; office Wed / Thu, 11:00 am-7:00 pm, with a ~1.5 hour commute each way (leave by 9:30 am, home ~8:30 pm). Sat / Sun off. Log in and out on Keka. Reminders for all of these run as Windows scheduled tasks ("Reminder - ...").
+  - Plan study blocks around these. Free practice time: Mon / Fri 9:30-11 am (after Scalar), Tue 7-11 am, Wed / Thu before ~9:15 am, weekday evenings between work and Binary Cloud (Mon / Tue / Fri 8-9:30 pm, Wed / Thu ~8:30-9:30 pm), and weekend afternoons/evenings after Coding Ninjas.
 - **Learning program:** this repo is his structured learning space (DSA in `scalar/`, plus full stack, cloud and plans). Tie lessons back to the FDE goal.
 
 ## Layout

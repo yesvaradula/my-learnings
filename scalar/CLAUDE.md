@@ -47,13 +47,13 @@ Coverage: arrays strong (#1-11, 17-18, 23, 28-33, 41); 2D arrays covered (#20, 2
 |-----|-------|
 | Tue Oct 20 (Navratri) | ~2 focused hours: hashing (HashMap/HashSet, frequency count, first repeating, pair with sum K, subarray with sum 0 via prefix + set). Park RotatedSortedArraySearch (binary search is not on the list) |
 | Wed Oct 21 | No Scalar class (none until Fri Oct 23). 7-7:45 am: subarray with sum 0 (carried over from Tue; he already sees it is prefix sum + set, not sliding window). 7:50-9:30 am: recursion basics (sum of digits, palindrome, base case + trust the call) + fast power. 2-5 pm: modular arithmetic (`(a+b)%m`, `(a*b)%m` in `long`, negative mod fix, fast power mod) + GCD (Euclid, gcd of array, lcm). 6-8:30 pm: count sort + comparator problems (sort by frequency, largest number). Fast power mod written **recursively** = first recursion rep |
-| Thu Oct 22 | (Re-planned Oct 22 morning: contest moved to Fri noon.) PowMod done Wed night (#52). Morning: GCD (Euclid, gcd of array). 10-11:30 count sort + comparators. 12-2 merge sort and quick sort partition (count inversions only if fresh). 3-4:30 one 90-min mixed timed mock (4 problems, include one bits and one 2D), then fix what broke. Binary Cloud live at 9:30 pm. Sleep by 11:30 |
-| Fri Oct 23 | Scalar class 7-9:30 am (if running). 10-11:15 light warm-up only (hashing trap list, GCD, PowMod template, one sort from memory), no new topics. 11:15 eat, water. **Contest 2 at 12:00 noon.** Evening: review contest misses before Binary Cloud |
-| Sat Oct 24 | Coding Ninjas 11-2. **Linux lab 3-5:30.** Evening: upsolve contest misses; hashing ladder #8 count subarrays with sum K + #3 first non-repeating |
-| Sun Oct 25 | Coding Ninjas 11-2. **Windows lab 3-5:30.** Evening: recursion subsets + spiral re-solve (explain the guards) |
-| Mon Oct 26 | Scalar class 7-9:30. Afternoon: bits ladder from `bit.md` (check/set/clear, count set bits incl. negatives, single number); finish `BitBasics.java` |
-| Tue Oct 27 | Free day: 60-min interview-mode mock explained aloud (morning), fix gaps (afternoon), one sorting + one hashing re-solve from a blank file |
-| Wed Oct 28 | Scalar class 7-9:30. Light warm-up only, nap/rest in the evening. Skip the live Binary Cloud class (recording later). **Mock interview 11:00 pm** |
+| Thu Oct 22 | (Re-planned Oct 22 morning: contest moved to Fri noon, and office hours now apply, see the root `CLAUDE.md`. Office day: leave 9:30.) 7-9:15 GCD (Euclid, gcd of array), `tasks/math/GCD.java`. Evening ~8:30-11: count sort + comparators instead of the live Binary Cloud class (recording on the weekend), since sorting is contest syllabus and has no other slot before noon Fri. Sleep by 11:30 |
+| Fri Oct 23 | WFH day, but **Contest 2 at 12:00 noon falls inside work hours: needs leave or a calendar block (arrange Thu)**. Scalar class 7-9:30 am (if running). 9:45-11:15 merge sort + quick sort partition, concept and one dry run each, no heavy coding. 11:15 eat, water. Contest 12. Evening: note the misses before Binary Cloud |
+| Sat Oct 24 | Coding Ninjas 11-2. **Linux lab 3-5:30.** Evening: upsolve contest misses; merge sort / quick sort coded from a blank file with test loops |
+| Sun Oct 25 | Coding Ninjas 11-2. **Windows lab 3-5:30.** Evening: hashing ladder #8 count subarrays with sum K + #3 first non-repeating; recursion subsets |
+| Mon Oct 26 | Scalar class 7-9:30. 9:30-10:45 bits ladder from `bit.md` (count set bits incl. negatives, single number). Work 11-8. 8:15-9:15 finish `BitBasics.java` or spiral re-solve |
+| Tue Oct 27 | No class. 7-10:30: 60-min interview-mode mock explained aloud, then fix the gaps. Work 11-8. 8:15-9:15 one sorting + one hashing re-solve from a blank file |
+| Wed Oct 28 | Office day: Scalar class 7-9:30 overlaps leaving at 9:30 (leave on time, finish the class on the commute or the recording). Home ~8:30, eat, rest, light warm-up only. Skip the live Binary Cloud class. **Mock interview 11:00 pm** |
 
 Interview script for every problem: restate, walk an example, brute force, improve, code, edge-case test loop, state TC & SC unprompted.
 
