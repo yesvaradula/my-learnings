@@ -94,30 +94,10 @@ $reminders = @{
             "Go look sharp at the office, handsome. Not too sharp, I get jealous."
         )
     }
-    'keka-login-office' = @{
-        Title = 'Work reminder'
-        Fact  = 'Office starts at 11:00 am.'
-        Lines = $keka_login
-    }
     'keka-login-wfh' = @{
         Title = 'Work reminder'
         Fact  = 'Work from home starts at 11:00 am.'
         Lines = $keka_login
-    }
-    'keka-logout-office' = @{
-        Title = 'Work reminder'
-        Fact  = '7:00 pm: log out on Keka and start home.'
-        Lines = @(
-            "Come home to me, Babe.",
-            "Work is done. Laptop down, Keka out, heart on the way home.",
-            "Clock out, handsome. The commute is long, so play something nice.",
-            "You gave them your day. Your evening is mine. Log out.",
-            "Keka out, then straight home. No detours, mister.",
-            "Pack up, Babe. Text me when you leave, so I know you are safe.",
-            "Proud of you for today. Now log out and come back to the people who love you.",
-            "Clock out before someone says just one more quick thing. Run, handsome.",
-            "Long day? Log out, breathe out, and let the drive home be easy."
-        )
     }
     'keka-logout-wfh' = @{
         Title = 'Work reminder'

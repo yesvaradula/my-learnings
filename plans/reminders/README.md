@@ -17,7 +17,7 @@ git pull
 powershell -NoProfile -ExecutionPolicy Bypass -File plans\reminders\setup-reminders.ps1
 ```
 
-Expect 11 `OK` lines (one-time reminders already in the past print `SKIP`). Re-run it after changing the schedule or moving the repo folder. Text changes in `popup.ps1` apply on the next popup without re-running setup.
+Expect 9 `OK` lines (one-time reminders already in the past print `SKIP`). Re-run it after changing the schedule or moving the repo folder. Text changes in `popup.ps1` apply on the next popup without re-running setup.
 
 Preview a popup in the terminal instead of on screen:
 
@@ -33,8 +33,6 @@ powershell -NoProfile -ExecutionPolicy Bypass -File plans\reminders\popup.ps1 -K
 | Coding Ninjas class | `ninjas` | 10:45 am Sat / Sun |
 | Binary Cloud class | `cloud` | 9:15 pm Mon-Fri |
 | Leave for office | `leave-office` | 9:15 am Wed / Thu |
-| Keka login (office) | `keka-login-office` | 10:55 am Wed / Thu |
-| Keka logout (office) | `keka-logout-office` | 7:00 pm Wed / Thu |
 | Keka login (WFH) | `keka-login-wfh` | 10:55 am Mon / Tue / Fri |
 | Keka logout (WFH) | `keka-logout-wfh` | 8:00 pm Mon / Tue / Fri |
 | Standup call | `standup` | 8:25 pm Mon-Fri |
