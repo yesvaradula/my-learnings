@@ -108,7 +108,7 @@ static long lcm(int a, int b) {
 
 | # | Task | Pattern | Status |
 |---|------|---------|--------|
-| 1 | Rewrite `gcd` **iteratively** from a blank file (O(1) space) | Euclid loop | todo |
+| 1 | Rewrite `gcd` **iteratively** from a blank file (O(1) space) | Euclid loop | done Oct 22 (#53) |
 | 2 | GCD of an array | Fold with `g = 0` | todo |
 | 3 | **Delete one:** max GCD of the array after deleting exactly one element | Prefix + suffix GCD | todo |
 | 4 | LCM of two numbers (overflow-safe) | `a / g * b` in `long` | todo |
