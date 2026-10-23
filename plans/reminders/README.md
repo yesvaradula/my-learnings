@@ -8,6 +8,7 @@ Installed on this laptop and the Launch laptop only (not on client machines).
 | File | What it holds |
 |------|---------------|
 | `setup-reminders.ps1` | The schedule: task names, days, times, and which popup kind each one shows. Creates or replaces every task. |
+| `leaves.txt` | Leave days, one `yyyy-MM-dd` per line (dates only, no reasons). The Friday Projector popup lists this week's leave days and the hours to enter: 8 per worked day, e.g. leave Mon + Thu gives 3 days x 8 = 24 hours, not 40. Edits need no setup re-run; pull on the other laptop. |
 | `popup.ps1` | The popup text: a fixed fact line per kind plus a pool of rotating lines (romantic, cheesy, teasing, demanding). One is picked at random each time, never the same one twice in a row. |
 
 ## Setup (once per laptop)

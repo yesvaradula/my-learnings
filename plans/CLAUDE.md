@@ -10,7 +10,7 @@ Everything here ties back to the main goal: **Forward Deployed Engineer (FDE)**:
 |--------|---------|--------|
 | `ideas/` | Product / project ideas worth building, one subfolder per idea | active |
 | `ideas/5amclub/` | Web app that encourages people to wake up at 5 AM (PWA on GCP) | v0 plan drafted: `00_idea.md`, open questions in section 15 |
-| `reminders/` | Windows popups for classes, Keka, standup, Friday Projector hours, contest, mock. `setup-reminders.ps1` = schedule (safe to re-run), `popup.ps1` = rotating flirty lines, `README.md` = how it works | active; update the script and README whenever a reminder changes |
+| `reminders/` | Windows popups for classes, Keka, standup, Friday Projector hours, contest, mock. `setup-reminders.ps1` = schedule (safe to re-run), `popup.ps1` = rotating flirty lines, `leaves.txt` = his leave days for the Friday Projector hours popup, `README.md` = how it works | active; update the script and README whenever a reminder changes. When Sai says he is on leave, add the date (no reason) to `leaves.txt`, commit and push |
 
 Planned, not created yet: `roadmaps/` (e.g. the FDE roadmap built around his weekly schedule) and `goals/` (milestones and trackers).
 

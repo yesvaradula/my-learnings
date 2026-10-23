@@ -1,0 +1,5 @@
+# Leave days, one date per line (yyyy-MM-dd). Read by the Friday "Projector hours" popup,
+# which lists this week's leave days and the hours to enter (8 per worked day).
+# Dates only: no reasons, nothing personal or medical. Public holidays can go here too.
+# Example:
+# 2026-10-19

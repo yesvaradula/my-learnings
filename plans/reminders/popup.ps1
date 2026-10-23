@@ -10,8 +10,34 @@ param(
     # Scheduled time, 'HH:mm' (weekly) or 'yyyy-MM-dd HH:mm' (one-time). Lets a run that was
     # delayed by sleep say it is late, or skip itself when it is too stale to be useful.
     [string]$Due,
+    # Leave days for the Friday Projector reminder (default: leaves.txt next to this script).
+    [string]$LeavesFile,
     [switch]$Print
 )
+
+# Windows PowerShell 5.1 leaves $PSScriptRoot empty inside param defaults, so resolve it here.
+if (-not $LeavesFile) { $LeavesFile = Join-Path $PSScriptRoot 'leaves.txt' }
+
+# This week's Mon-Fri split into leave days and worked days, with the hours to enter (8 per worked day).
+function Get-WeekHours($path) {
+    $today = (Get-Date).Date
+    $monday = $today.AddDays(-(([int]$today.DayOfWeek + 6) % 7))
+    $days = 0..4 | ForEach-Object { $monday.AddDays($_) }
+    $leaves = @()
+    if (Test-Path $path) {
+        $leaves = Get-Content $path | ForEach-Object { ($_ -replace '#.*', '').Trim() } | Where-Object { $_ } |
+            ForEach-Object { [datetime]::ParseExact($_, 'yyyy-MM-dd', $null) }
+    }
+    $off = @($days | Where-Object { $leaves -contains $_ })
+    $worked = @($days | Where-Object { $leaves -notcontains $_ })
+    $fmt = { ($args[0] | ForEach-Object { $_.ToString('ddd MMM d') }) -join ', ' }
+    $week = "Week of $($monday.ToString('ddd MMM d')) - $($days[4].ToString('ddd MMM d'))."
+    if ($off.Count -eq 0) {
+        return "$week`nNo leave this week: 5 days x 8 = 40 hours."
+    }
+    "$week`nLEAVE: $(& $fmt $off). Enter 0 hours for these days.`n" +
+    "Worked: $(& $fmt $worked) = $($worked.Count) days x 8 = $($worked.Count * 8) hours, NOT 40."
+}
 
 $lateNote = ''
 if ($Due) {
@@ -215,7 +241,12 @@ if ($lines.Count -gt 1) {
 New-Item -ItemType Directory -Force -Path $stateDir | Out-Null
 Set-Content -Path $stateFile -Value $pick
 
-$text = "$lateNote$($r.Fact)`n`n$($lines[$pick])"
+$fact = $r.Fact
+if ($Kind -eq 'projector') {
+    $fact += "`n`n" + (Get-WeekHours $LeavesFile) + "`nTook a leave that is not listed here? Fix it before you submit."
+}
+
+$text = "$lateNote$fact`n`n$($lines[$pick])"
 if ($Print) {
     Write-Host "[$($r.Title)] $text"
 } else {
