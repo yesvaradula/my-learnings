@@ -48,7 +48,189 @@ What happens on that line:
 3. `new` returns the **address** (reference) of the object.
 4. `a` (on the **stack**) stores that reference, not the object itself.
 
-### 1.2 Key details
+### 1.2 Constructors in depth
+
+A **constructor** is a special block that runs exactly once, when `new` creates the object. Its job is to put the object in a valid starting state.
+
+**Rules that make it a constructor:**
+- Same name as the class, exactly.
+- **No return type**, not even `void`.
+- Called only through `new` (or through `this(...)` / `super(...)` from another constructor).
+- Not inherited by subclasses. Can be `public`, `private`, `protected` or package-private.
+
+#### A. Default constructor (written by the compiler)
+
+If a class has **no constructor at all**, Java adds an invisible, empty, no-argument one. Fields keep their default values.
+
+```java
+class Box {
+    int w;
+    String label;
+}                        // no constructor written: the compiler adds Box() { }
+
+Box b = new Box();
+System.out.println("Box defaults: w = " + b.w + ", label = " + b.label);
+// Box defaults: w = 0, label = null
+```
+
+**The trap:** write **any** constructor yourself and the free default one is gone.
+
+```java
+class Student {
+    String name;
+    Student(String name) { this.name = name; }
+}
+
+Student s = new Student();   // compile error:
+// error: constructor Student in class Student cannot be applied to given types;
+//   required: String
+```
+
+Fix: also write `Student() { }` yourself if you still want `new Student()`.
+
+#### B. No-arg constructor (written by you)
+
+Looks like the default one, but you wrote it, so it can set values or log.
+
+```java
+Point() {
+    System.out.println("Point() no-arg");
+}
+```
+
+#### C. Parameterised constructor
+
+Takes the starting values as arguments. Use `this.x` for the field when the parameter has the same name.
+
+```java
+Point(int x, int y) {
+    this.x = x;
+    this.y = y;
+}
+```
+
+#### D. Overloading and chaining with `this(...)`
+
+A class can have several constructors with **different parameter lists** (overloading). One constructor can call another with `this(...)` to avoid repeating code. `this(...)` must be the **first statement**.
+
+```java
+Point(int both) {
+    this(both, both);                                  // reuse Point(int, int)
+    System.out.println("Point(int) after this(...)");
+}
+
+Point p3 = new Point(7);
+// Point(int, int)
+// Point(int) after this(...)
+// p3 is (7, 7)
+```
+
+The chained constructor runs first, then the rest of the caller's body.
+
+#### E. Copy constructor
+
+Builds a new object with the same values as an existing one. The two are separate objects afterwards.
+
+```java
+Point(Point other) {
+    this(other.x, other.y);
+}
+
+Point p2 = new Point(3, 4);
+Point p4 = new Point(p2);
+p4.x = 99;
+// p2 is still (3, 4), p4 is (99, 4)
+```
+
+Compare with `Point p4 = p2;`, which copies only the reference (both names, one object; see 1.4).
+
+#### F. Order of initialisation
+
+When `new` runs, things happen in this order:
+1. All fields get default values (`0`, `null`, `false`).
+2. Field initialisers (`int a = 10;`) and instance blocks (`{ ... }`) run, top to bottom.
+3. The constructor body runs.
+
+```java
+class Order {
+    int a = 10;
+    int b;
+    { System.out.println("instance block: a = " + a + ", b = " + b); b = 20; }
+    Order() { System.out.println("constructor: a = " + a + ", b = " + b); b = 30; }
+}
+
+new Order();
+// instance block: a = 10, b = 0
+// constructor: a = 10, b = 20
+// (b ends as 30)
+```
+
+#### G. Constructors and inheritance: `super()`
+
+Every constructor's first line is either `this(...)` or `super(...)`. If you write neither, Java inserts `super()` (the parent's no-arg constructor), so the **parent is built first**.
+
+```java
+class Animal { Animal() { System.out.println("Animal()"); } }
+class Dog extends Animal { Dog() { System.out.println("Dog()"); } }
+
+new Dog();
+// Animal()
+// Dog()
+```
+
+If the parent has **no** no-arg constructor, the child must call `super(args)` explicitly, or it does not compile.
+
+#### H. `final` fields must be set by every constructor
+
+```java
+class Account {
+    final String id;          // must be assigned exactly once
+    double balance;
+    Account(String id) { this.id = id; }
+    Account(String id, double balance) { this(id); this.balance = balance; }
+}
+// new Account("A1", 500) -> id A1, balance 500.0
+```
+
+#### I. Private constructor
+
+Stops anyone outside the class from calling `new`. Used for utility classes (only static methods) and the Singleton pattern.
+
+```java
+class MathUtil {
+    private MathUtil() { }
+    static int square(int x) { return x * x; }
+}
+// MathUtil.square(5) -> 25; new MathUtil() outside the class does not compile
+```
+
+#### J. Constructor traps
+
+1. **A return type turns it into a method.** `void Point() { }` compiles, but it is an ordinary method that `new` never calls.
+   ```java
+   p1.Point();   // I am a method, not a constructor
+   ```
+2. **Forgetting `this.`** when the parameter shadows the field: `age = age;` assigns the parameter to itself, and the field stays 0.
+   ```java
+   class Shadow { int age; Shadow(int age) { age = age; } }
+   new Shadow(25).age   // 0, not 25
+   ```
+3. Writing a parameterised constructor and still calling `new X()` (A).
+4. `this(...)` or `super(...)` anywhere except the first line: compile error. You also cannot use both in one constructor.
+5. Calling an overridable method from a constructor: the subclass version runs before the subclass fields are set (advanced; just avoid it).
+
+#### Constructor vs method
+
+| | Constructor | Method |
+|---|---|---|
+| Name | Same as the class | Any name |
+| Return type | None (not even `void`) | Required (`void` or a type) |
+| Called by | `new`, `this(...)`, `super(...)` | Explicitly, any number of times |
+| Runs | Once per object, at creation | Whenever called |
+| Inherited | No | Yes (unless private) |
+| Compiler adds one | Yes, if you write none | Never |
+
+### 1.3 Key details
 
 | Concept | What to remember |
 |---|---|
@@ -60,7 +242,7 @@ What happens on that line:
 | Access modifiers | `private` (this class only), default/package, `protected` (package + subclasses), `public` (everyone). Good practice: private fields + public methods (encapsulation). |
 | `toString()` | Override it to print objects nicely; otherwise you see `Student@1b6d3586`. |
 
-### 1.3 References: the most important idea (it powers linked lists)
+### 1.4 References: the most important idea (it powers linked lists)
 
 A variable of a class type holds a **reference** (an arrow to the object), not the object.
 
@@ -80,7 +262,7 @@ b ---/
 
 Both arrows point at one object, so a change through `b` is visible through `a`.
 
-### 1.4 `==` vs `.equals()`
+### 1.5 `==` vs `.equals()`
 
 - `==` on objects compares **references**: "is it the same object?"
 - `.equals()` compares **content**, if the class defines it (`String` does).
@@ -96,7 +278,7 @@ System.out.println("s1 == s2: " + (s1 == s2) + ", equals: " + s1.equals(s2));
 
 Rule: compare strings (and any objects by value) with `.equals()`, never `==`.
 
-### 1.5 Java is always pass-by-value
+### 1.6 Java is always pass-by-value
 
 Java copies the value into the parameter. For an object, the value **is the reference**. So:
 
@@ -118,7 +300,7 @@ System.out.println("n = " + n + ", a = " + a);
 
 This is exactly why linked list methods **return the new head**: reassigning `head` inside a method does not change the caller's `head`.
 
-### 1.6 `null` and NullPointerException
+### 1.7 `null` and NullPointerException
 
 A reference that points at nothing is `null`. Calling a method or reading a field through it (`s.age` when `s == null`) throws **NullPointerException**. Always ask "can this be null?" before using a dot.
 
@@ -311,7 +493,7 @@ Every method must handle `head == null` first.
 3. `cur != null` vs `cur.next != null`: visit every node vs stop at the last one. Mixing them up skips the last node or throws NullPointerException.
 4. Wrong order of the two pointer assignments when inserting (2.6).
 5. Deleting: you need the node **before** the target, and the head is a special case.
-6. A method that changes the head must **return** it, and the caller must write `head = method(head, ...)` (pass-by-value, 1.5).
+6. A method that changes the head must **return** it, and the caller must write `head = method(head, ...)` (pass-by-value, 1.6).
 7. `==` vs `.equals()` when comparing node values that are objects (`Integer`, `String`).
 8. Draw boxes and arrows for every pointer change. Most linked list bugs are visible on paper.
 
