@@ -52,6 +52,8 @@ What happens on that line:
 
 A **constructor** is a special block that runs exactly once, when `new` creates the object. Its job is to put the object in a valid starting state.
 
+**Kinds at a glance:** default (compiler-written, A), no-arg (you write it, B), parameterised (C), overloaded and chained with `this(...)` (D), copy constructor (E), private (I). Copy constructors can be shallow or deep, see 1.9.
+
 **Rules that make it a constructor:**
 - Same name as the class, exactly.
 - **No return type**, not even `void`.
@@ -248,7 +250,7 @@ class MathUtil {
 | `this` | The current object. Needed when a parameter has the same name as a field (`this.age = age`). `this(...)` calls another constructor. |
 | Default field values | `int` 0, `boolean` false, `double` 0.0, any object (including `String`) `null`. Local variables get **no** default: using one uninitialised is a compile error. |
 | `static` field | Shared by all objects (`Student.count`). Access it through the class name. |
-| `static` method | Belongs to the class, has no `this`, so it cannot touch instance fields directly. `main` is static. |
+| `static` method | Belongs to the class, has no `this`, so it cannot touch instance fields directly. `main` is static. Full detail in 1.8. |
 | Access modifiers | `private` (this class only), default/package, `protected` (package + subclasses), `public` (everyone). Good practice: private fields + public methods (encapsulation). |
 | `toString()` | Override it to print objects nicely; otherwise you see `Student@1b6d3586`. |
 
@@ -313,6 +315,199 @@ This is exactly why linked list methods **return the new head**: reassigning `he
 ### 1.7 `null` and NullPointerException
 
 A reference that points at nothing is `null`. Calling a method or reading a field through it (`s.age` when `s == null`) throws **NullPointerException**. Always ask "can this be null?" before using a dot.
+
+### 1.8 Static vs instance: variables and methods
+
+**Instance** members belong to each object. **Static** members belong to the class itself, one copy shared by every object, and exist even before any object is created.
+
+```java
+class Employee {
+    static int count = 0;                      // static (class) variable: one copy
+    static final String COMPANY = "Launch";    // static final: a constant
+    static String policy;
+
+    static {                                   // static block: runs ONCE, when the class is first used
+        policy = "Hybrid";
+        System.out.println("static block ran");
+    }
+
+    String name;                               // instance variable: one copy per object
+    int id;
+
+    Employee(String name) {
+        this.name = name;
+        count++;                               // every object bumps the SAME counter
+        id = count;
+    }
+
+    static int getCount() {                    // static method: no this, no instance fields
+        return count;
+    }
+
+    String describe() {                        // instance method: can use instance AND static
+        return name + " #" + id + " of " + count + " at " + COMPANY + " (" + policy + ")";
+    }
+}
+```
+
+```java
+System.out.println("before any Employee");
+System.out.println("count = " + Employee.count);   // usable with zero objects
+Employee e1 = new Employee("Sai");
+Employee e2 = new Employee("Ravi");
+System.out.println(e1.describe());
+System.out.println(e2.describe());
+System.out.println("Employee.getCount() = " + Employee.getCount());
+```
+```
+before any Employee
+static block ran              <- class loads on first use, block runs once
+count = 0
+Sai #1 of 2 at Launch (Hybrid)
+Ravi #2 of 2 at Launch (Hybrid)
+Employee.getCount() = 2
+```
+
+`name` and `id` differ per object; `count` is shared, so both report "of 2".
+
+```
+            Employee class (one copy)
+            count = 2, COMPANY, policy
+               ^                ^
+               |                |
+e1 --> [ name: Sai, id: 1 ]   e2 --> [ name: Ravi, id: 2 ]
+```
+
+**What can access what:**
+
+| From | Instance variable / method | Static variable / method |
+|---|---|---|
+| Instance method | Yes (through `this`) | Yes |
+| Static method | **No** (no `this`; which object would it mean?) | Yes |
+
+```java
+public class StaticErr {
+    int x = 5;
+    static void show() { System.out.println(x); }
+}
+// error: non-static variable x cannot be referenced from a static context
+```
+
+That is why `main` (static) has to create an object first, `new Solution().solve(...)`, or call only static helpers, which is why our DSA helpers are all `static`.
+
+**Static through an object reference works, but it is misleading:**
+
+```java
+e1.count = 50;
+System.out.println("after e1.count = 50, e2.count = " + e2.count);
+// after e1.count = 50, e2.count = 50
+```
+
+There is only one `count`, so changing it "through e1" changes it for everyone. Always write `Employee.count`.
+
+| | Instance | Static |
+|---|---|---|
+| Belongs to | Each object | The class |
+| Copies | One per object | Exactly one |
+| Created | With `new` | When the class loads |
+| Access | `obj.name`, `obj.describe()` | `Employee.count`, `Employee.getCount()` |
+| `this` available | Yes | No |
+| Typical use | Per-object state and behaviour | Counters, constants (`static final`), utility methods (`Math.max`), `main` |
+
+Static traps:
+1. Using an instance field inside a static method (compile error above).
+2. Expecting a static field to be per-object (the `e1.count` surprise).
+3. Static state survives between test cases: a static counter or list must be reset, or test 2 sees test 1's leftovers. In DSA, prefer local variables.
+
+### 1.9 Creating a copy: reference copy, shallow copy, deep copy
+
+The question is: when an object holds **other objects** (an `Address`, an array), what does a copy share?
+
+```java
+class Address {
+    String city;
+    Address(String city) { this.city = city; }
+}
+
+class Person {
+    String name;
+    int age;              // primitive
+    Address address;      // reference to another object
+    int[] scores;         // arrays are objects too
+
+    Person(String name, int age, Address address, int[] scores) { ... }
+
+    Person shallowCopy() {   // new Person, but the SAME Address and array
+        return new Person(name, age, address, scores);
+    }
+
+    Person deepCopy() {      // new Person AND new copies of everything inside
+        return new Person(name, age, new Address(address.city), scores.clone());
+    }
+}
+```
+
+The experiment: make three copies, then change the original in three places.
+
+```java
+Person original = new Person("Sai", 30, new Address("Hyderabad"), new int[] { 90, 80 });
+
+Person ref     = original;               // 1. reference copy
+Person shallow = original.shallowCopy(); // 2. shallow copy
+Person deep    = original.deepCopy();    // 3. deep copy
+
+original.age = 31;                   // a primitive field
+original.address.city = "Bengaluru"; // inside the nested object
+original.scores[0] = 10;             // inside the array
+```
+```
+original: Sai, 31, Bengaluru, [10, 80]
+ref:      Sai, 31, Bengaluru, [10, 80]   <- same object: sees every change
+shallow:  Sai, 30, Bengaluru, [10, 80]   <- own age, but SHARES address and scores
+deep:     Sai, 30, Hyderabad, [90, 80]   <- fully independent
+shallow.address == original.address: true
+deep.address == original.address: false
+```
+
+```
+Reference copy:  original --\
+                             >--> [Person] --> [Address] , [scores]
+                 ref -------/
+
+Shallow copy:    original --> [Person] --\
+                                          >--> [Address] , [scores]   (shared)
+                 shallow  --> [Person] --/
+
+Deep copy:       original --> [Person] --> [Address] , [scores]
+                 deep     --> [Person] --> [Address'] , [scores']   (separate)
+```
+
+| Kind | How | New outer object? | Nested objects | Change to `original.address.city` shows in the copy? |
+|---|---|---|---|---|
+| Reference copy | `b = a` | No | Same | Yes |
+| Shallow copy | Copy every field as is (copy constructor that assigns fields, `Object.clone()` by default) | Yes | **Shared** | **Yes** |
+| Deep copy | Also copy every nested object, recursively | Yes | New copies | No |
+
+Key details:
+- Primitives (`int age`) and immutable objects (`String name`) are safe in a shallow copy: you cannot change a String in place, so sharing it is harmless.
+- **Mutable** nested objects (`Address`, arrays, lists) are where shallow copies bite.
+- `array.clone()` is shallow: fine for `int[]`, but for a 2D array it copies only the outer array of row references.
+
+```java
+int[][] grid = { { 1, 2 }, { 3, 4 } };
+int[][] g2 = grid.clone();           // shallow: rows are shared
+g2[0][0] = 99;
+// grid[0][0] after changing clone: 99
+
+int[][] g3 = new int[grid.length][];
+for (int i = 0; i < grid.length; i++) g3[i] = grid[i].clone();   // deep: copy each row
+g3[1][1] = 77;
+// grid[1][1] after changing deep copy: 4
+```
+
+- In DSA this matters when you **save a snapshot** (for example, adding the current path to the answer list in recursion/backtracking): add `new ArrayList<>(path)`, not `path` itself, or every saved answer changes when `path` changes later.
+
+When to use which: shallow is cheap and fine when nested parts are immutable or meant to be shared; deep copy when the copy must stay independent (snapshots, undo, passing data you do not want modified).
 
 ---
 
@@ -520,6 +715,9 @@ Every method must handle `head == null` first.
 | 7 | Merge two sorted lists | Dummy head node |
 
 ## Interview lines
+
+- *"Static members belong to the class, one shared copy; instance members belong to each object. A static method has no this, so it cannot use instance fields without an object."*
+- *"A shallow copy creates a new outer object but shares the nested mutable objects; a deep copy copies those too, so changes to one never show in the other."*
 
 - *"A class is a blueprint; an object is an instance created with new. The variable holds a reference to the object, not the object itself."*
 - *"Java is pass-by-value; for objects the value is the reference, so I can change the object through it but reassigning it inside a method does not affect the caller. That is why my linked list methods return the head."*
