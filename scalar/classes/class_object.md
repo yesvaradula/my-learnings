@@ -206,10 +206,20 @@ class MathUtil {
 
 #### J. Constructor traps
 
-1. **A return type turns it into a method.** `void Point() { }` compiles, but it is an ordinary method that `new` never calls.
+1. **A return type turns it into a method.** Asked in class (Oct 23): "Can we add a return type to a constructor?" Teacher's answer: **no**. A constructor has no return type by definition. The twist: if you write one anyway, Java gives **no error**; it silently treats it as an ordinary method that happens to share the class name, and `new` never calls it.
    ```java
-   p1.Point();   // I am a method, not a constructor
+   class Point {
+       void Point() {     // compiles, but this is a METHOD
+           System.out.println("I am a method, not a constructor");
+       }
+   }
+
+   Point p1 = new Point();   // runs the compiler's default constructor; prints nothing
+   p1.Point();               // only an explicit call runs it:
+   // I am a method, not a constructor
    ```
+   Why it is dangerous: no compile error, just setup code that never runs on `new`.
+   Interview line: *"Constructors have no return type. If you add one, even void, Java treats it as a normal method with the class's name, so it won't run on new. It compiles, which makes the bug easy to miss."*
 2. **Forgetting `this.`** when the parameter shadows the field: `age = age;` assigns the parameter to itself, and the field stays 0.
    ```java
    class Shadow { int age; Shadow(int age) { age = age; } }
