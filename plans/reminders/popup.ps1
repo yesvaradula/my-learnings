@@ -7,8 +7,22 @@
 
 param(
     [Parameter(Mandatory = $true)][string]$Kind,
+    # Scheduled time, 'HH:mm' (weekly) or 'yyyy-MM-dd HH:mm' (one-time). Lets a run that was
+    # delayed by sleep say it is late, or skip itself when it is too stale to be useful.
+    [string]$Due,
     [switch]$Print
 )
+
+$lateNote = ''
+if ($Due) {
+    $format = if ($Due.Length -gt 5) { 'yyyy-MM-dd HH:mm' } else { 'HH:mm' }
+    $dueAt = [datetime]::ParseExact($Due, $format, $null)
+    $lateBy = ((Get-Date) - $dueAt).TotalMinutes
+    if ($lateBy -gt 60) { exit }
+    if ($lateBy -gt 3) {
+        $lateNote = "Late popup: this was due at $($dueAt.ToString('h:mm tt')) but the laptop was asleep.`n`n"
+    }
+}
 
 $keka_login = @(
     "Log in on Keka, Babe. Show them how a real engineer starts the day.",
@@ -187,7 +201,7 @@ if ($lines.Count -gt 1) {
 New-Item -ItemType Directory -Force -Path $stateDir | Out-Null
 Set-Content -Path $stateFile -Value $pick
 
-$text = "$($r.Fact)`n`n$($lines[$pick])"
+$text = "$lateNote$($r.Fact)`n`n$($lines[$pick])"
 if ($Print) {
     Write-Host "[$($r.Title)] $text"
 } else {

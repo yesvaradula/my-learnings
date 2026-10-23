@@ -50,4 +50,5 @@ Every popup fires 5 minutes before its event.
 
 - Windows' default task settings refuse to start on battery (result `0x800710E0`, the popup silently never shows). The setup script turns that off; any task made by hand must do the same.
 - Morning reminders (Scaler, Coding Ninjas, Leave for office, Keka login, Contest) have `Wake = $true`: they wake a sleeping laptop. Setup also allows wake timers on battery in the power plan (off by default). On a Modern Standby laptop the screen may stay dark; the popup waits there until the lid opens. Evening reminders do not wake the laptop.
+- Missed runs (Oct 23: lid closed 4:24-8:37 pm, the 7:55 Keka logout and 8:25 standup popups never showed): every task has `StartWhenAvailable`, so a run missed during sleep starts as soon as the laptop wakes. Each task passes its time as `-Due`; `popup.ps1` adds a "Late popup" line when it is more than 3 minutes late, and stays silent when it is over 60 minutes late. A laptop with the lid closed still cannot be relied on, so keep a phone alarm for anything that must not be missed.
 - Last-shown line per kind is stored in `%LOCALAPPDATA%\reminders\` (outside the repo).

@@ -41,12 +41,15 @@ powercfg /setdcvalueindex SCHEME_CURRENT SUB_SLEEP RTCWAKE 1
 powercfg /setactive SCHEME_CURRENT
 
 # Default task settings refuse to start on battery (error 0x800710E0); allow it explicitly.
-$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
-$wakeSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -WakeToRun
+# StartWhenAvailable: a run missed while the lid was closed starts as soon as the laptop wakes
+# (Oct 23: lid closed 4:24-8:37 pm, so the 7:55 and 8:25 popups were silently skipped).
+# popup.ps1 gets the due time, marks a late popup as late and drops one that is over an hour stale.
+$settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
+$wakeSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -WakeToRun
 
 function Register-Reminder($r, $trigger) {
     $action = New-ScheduledTaskAction -Execute 'powershell.exe' `
-        -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$popup`" -Kind $($r.Kind)"
+        -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$popup`" -Kind $($r.Kind) -Due `"$($r.At)`""
     $s = if ($r.Wake) { $wakeSettings } else { $settings }
     Register-ScheduledTask -TaskName "Reminder - $($r.Name)" -Action $action -Trigger $trigger `
         -Settings $s -Force | Out-Null
