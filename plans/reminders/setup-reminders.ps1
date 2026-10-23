@@ -13,17 +13,17 @@
 # Times are local (IST). Keep this file in sync with the schedule in CLAUDE.md.
 
 $weekly = @(
-    @{ Name = 'Scaler class';          Kind = 'scaler';             At = '06:45'; Days = 'Monday', 'Wednesday', 'Friday' },
-    @{ Name = 'Coding Ninjas class';   Kind = 'ninjas';             At = '10:45'; Days = 'Saturday', 'Sunday' },
+    @{ Name = 'Scaler class';          Kind = 'scaler';             At = '06:45'; Days = 'Monday', 'Wednesday', 'Friday'; Wake = $true },
+    @{ Name = 'Coding Ninjas class';   Kind = 'ninjas';             At = '10:45'; Days = 'Saturday', 'Sunday'; Wake = $true },
     @{ Name = 'Binary Cloud class';    Kind = 'cloud';              At = '21:15'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' },
-    @{ Name = 'Leave for office';      Kind = 'leave-office';       At = '09:15'; Days = 'Wednesday', 'Thursday' },
-    @{ Name = 'Keka login (WFH)';      Kind = 'keka-login-wfh';     At = '10:55'; Days = 'Monday', 'Tuesday', 'Friday' },
+    @{ Name = 'Leave for office';      Kind = 'leave-office';       At = '09:15'; Days = 'Wednesday', 'Thursday'; Wake = $true },
+    @{ Name = 'Keka login (WFH)';      Kind = 'keka-login-wfh';     At = '10:55'; Days = 'Monday', 'Tuesday', 'Friday'; Wake = $true },
     @{ Name = 'Keka logout (WFH)';     Kind = 'keka-logout-wfh';    At = '20:00'; Days = 'Monday', 'Tuesday', 'Friday' },
     @{ Name = 'Standup call';          Kind = 'standup';            At = '20:25'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' }
 )
 
 $once = @(
-    @{ Name = 'Scaler Contest 2';      Kind = 'contest'; At = '2026-10-27 09:30' },
+    @{ Name = 'Scaler Contest 2';      Kind = 'contest'; At = '2026-10-27 09:30'; Wake = $true },
     @{ Name = 'Scaler Mock Interview'; Kind = 'mock';    At = '2026-10-28 22:30' }
 )
 
@@ -33,15 +33,23 @@ $retired = @('Keka login (office)', 'Keka logout (office)')
 
 $popup = Join-Path $PSScriptRoot 'popup.ps1'
 
+# Morning reminders (Wake = $true) wake a sleeping laptop. Windows ignores that unless wake
+# timers are allowed in the power plan, and on battery they are off by default.
+powercfg /setacvalueindex SCHEME_CURRENT SUB_SLEEP RTCWAKE 1
+powercfg /setdcvalueindex SCHEME_CURRENT SUB_SLEEP RTCWAKE 1
+powercfg /setactive SCHEME_CURRENT
+
 # Default task settings refuse to start on battery (error 0x800710E0); allow it explicitly.
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries
+$wakeSettings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -WakeToRun
 
 function Register-Reminder($r, $trigger) {
     $action = New-ScheduledTaskAction -Execute 'powershell.exe' `
         -Argument "-NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -File `"$popup`" -Kind $($r.Kind)"
+    $s = if ($r.Wake) { $wakeSettings } else { $settings }
     Register-ScheduledTask -TaskName "Reminder - $($r.Name)" -Action $action -Trigger $trigger `
-        -Settings $settings -Force | Out-Null
-    Write-Host "OK    Reminder - $($r.Name)"
+        -Settings $s -Force | Out-Null
+    Write-Host ("OK    Reminder - $($r.Name)" + $(if ($r.Wake) { ' (wakes the laptop)' } else { '' }))
 }
 
 foreach ($name in $retired) {

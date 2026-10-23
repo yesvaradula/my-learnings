@@ -47,5 +47,5 @@ powershell -NoProfile -ExecutionPolicy Bypass -File plans\reminders\popup.ps1 -K
 ## Gotchas
 
 - Windows' default task settings refuse to start on battery (result `0x800710E0`, the popup silently never shows). The setup script turns that off; any task made by hand must do the same.
-- A sleeping laptop shows no popup.
+- Morning reminders (Scaler, Coding Ninjas, Leave for office, Keka login, Contest) have `Wake = $true`: they wake a sleeping laptop. Setup also allows wake timers on battery in the power plan (off by default). On a Modern Standby laptop the screen may stay dark; the popup waits there until the lid opens. Evening reminders do not wake the laptop.
 - Last-shown line per kind is stored in `%LOCALAPPDATA%\reminders\` (outside the repo).
