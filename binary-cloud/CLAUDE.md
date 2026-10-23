@@ -5,6 +5,7 @@ Cloud course notes, one subfolder per provider. Class: Mon-Fri, 9:30-11:00 pm IS
 ## Layout
 - `aws/`: numbered notes, same format as `gcp/`.
 - `gcp/`: numbered notes, `NN_topic.md`, each with intuition, steps, gotchas, cross-cloud table, FDE angle, self-test.
+- `github/`: GitHub and CI/CD notes, same format (`01_github_actions.md`: beginner-to-solid guide with a practice ladder).
 
 ## Conventions
 - Learning mode: intuition first, then architecture, then real-world gotchas; tie back to full stack + FDE goal.
@@ -16,6 +17,7 @@ Cloud course notes, one subfolder per provider. Class: Mon-Fri, 9:30-11:00 pm IS
 |------|-------|--------|
 | aws/01_single_instance_app.md | UI + API + MySQL on one EC2 instance, Linux (Oct 19) and Windows (Oct 20) | Notes saved Oct 20 (from his class summary, joined Oct 20 class late); self-test open |
 | aws/02_single_instance_windows.md | Same app on Windows Server: RDP, IIS + URL Rewrite/ARR, waitress, NSSM service, two firewalls | Notes saved Oct 20 (from his class summary); self-test open |
+| github/01_github_actions.md | GitHub Actions from zero: vocabulary, triggers, jobs, secrets, OIDC deploys, security, debugging, practice ladder (Oct 23 class on GitHub and code maintenance; he is new to Actions) | Notes saved Oct 23; ladder and self-test open. Ladder task 2 (Java compile check) would flag MinimumSwaps.java and BitBasics.java (dry-run Oct 23: 82/84 compile) |
 | gcp/01_account.md | Account, billing, project, budget, gcloud | Done Oct 15: project `learning-sandbox-511709`, budget Rs 500, `gcloud` OK, trial Rs 28,000 until Dec 24 2026 |
 
 ## Hands-on labs
