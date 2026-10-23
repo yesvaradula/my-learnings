@@ -8,23 +8,24 @@
 # Popup text lives in popup.ps1 (edit it freely); this file only holds the schedule.
 # Re-run this script if the repo folder moves, since the tasks store popup.ps1's full path.
 #
-# Popups fire on battery and on charger. They cannot fire while the laptop is asleep.
+# Popups fire on battery and on charger. Only reminders marked Wake = $true wake a sleeping laptop.
 # One-time reminders whose time has already passed are skipped.
-# Times are local (IST). Keep this file in sync with the schedule in CLAUDE.md.
+# Times are local (IST). Every popup fires 5 minutes before its event (his rule, Oct 23).
+# Keep this file in sync with the schedule in CLAUDE.md.
 
 $weekly = @(
-    @{ Name = 'Scaler class';          Kind = 'scaler';             At = '06:45'; Days = 'Monday', 'Wednesday', 'Friday'; Wake = $true },
-    @{ Name = 'Coding Ninjas class';   Kind = 'ninjas';             At = '10:45'; Days = 'Saturday', 'Sunday'; Wake = $true },
-    @{ Name = 'Binary Cloud class';    Kind = 'cloud';              At = '21:15'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' },
-    @{ Name = 'Leave for office';      Kind = 'leave-office';       At = '09:15'; Days = 'Wednesday', 'Thursday'; Wake = $true },
+    @{ Name = 'Scaler class';          Kind = 'scaler';             At = '06:55'; Days = 'Monday', 'Wednesday', 'Friday'; Wake = $true },
+    @{ Name = 'Coding Ninjas class';   Kind = 'ninjas';             At = '10:55'; Days = 'Saturday', 'Sunday'; Wake = $true },
+    @{ Name = 'Binary Cloud class';    Kind = 'cloud';              At = '21:25'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' },
+    @{ Name = 'Leave for office';      Kind = 'leave-office';       At = '09:25'; Days = 'Wednesday', 'Thursday'; Wake = $true },
     @{ Name = 'Keka login (WFH)';      Kind = 'keka-login-wfh';     At = '10:55'; Days = 'Monday', 'Tuesday', 'Friday'; Wake = $true },
-    @{ Name = 'Keka logout (WFH)';     Kind = 'keka-logout-wfh';    At = '20:00'; Days = 'Monday', 'Tuesday', 'Friday' },
+    @{ Name = 'Keka logout (WFH)';     Kind = 'keka-logout-wfh';    At = '19:55'; Days = 'Monday', 'Tuesday', 'Friday' },
     @{ Name = 'Standup call';          Kind = 'standup';            At = '20:25'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' }
 )
 
 $once = @(
-    @{ Name = 'Scaler Contest 2';      Kind = 'contest'; At = '2026-10-27 09:30'; Wake = $true },
-    @{ Name = 'Scaler Mock Interview'; Kind = 'mock';    At = '2026-10-28 22:30' }
+    @{ Name = 'Scaler Contest 2';      Kind = 'contest'; At = '2026-10-27 09:55'; Wake = $true },
+    @{ Name = 'Scaler Mock Interview'; Kind = 'mock';    At = '2026-10-28 22:55' }
 )
 
 # Reminders that were dropped from the schedule; removed if present.

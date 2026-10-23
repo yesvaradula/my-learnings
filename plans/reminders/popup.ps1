@@ -43,7 +43,7 @@ $reminders = @{
             "Morning, love. Show up today and I promise to be extra sweet tonight.",
             "Blanket off, Babe. I know it is warm in there, but your future is warmer.",
             "The early bird gets the offer letter. Up you get, handsome.",
-            "Fifteen minutes to class. Splash some water, find your notebook, find your fire.",
+            "Five minutes to class. Splash some water, find your notebook, find your fire.",
             "You are not a snooze-button man. You are a Forward Deployed Engineer in the making.",
             "I would kiss you awake if I could. Consider this popup the next best thing."
         )
@@ -70,10 +70,10 @@ $reminders = @{
         Lines = @(
             "Come to class, Babe. The cloud misses you, and so do I.",
             "Dinner done? Good. Now go be my handsome cloud architect.",
-            "Do not make me come over there and close that tab for you. Class in 15.",
+            "Do not make me come over there and close that tab for you. Class in 5.",
             "Late again and I am not talking to you till 11. Fine, I will. But do not be late.",
             "AWS, Azure, GCP... none of them is as dreamy as you on time.",
-            "Fifteen minutes, Babe. Water, notes, headphones. Go make me proud.",
+            "Five minutes, Babe. Water, notes, headphones. Go make me proud.",
             "You promised me consistency. This is what it looks like. Join.",
             "One more class between you and cloud mastery. Do not keep the cloud waiting, Babe.",
             "Put the phone down. Yes, even my messages. Class first.",
@@ -91,7 +91,7 @@ $reminders = @{
             "Laptop, charger, ID card... and that smile. Go.",
             "Office day! Go charm them all, but come home to me.",
             "Leave late and the traffic wins. Do not let the traffic win, handsome.",
-            "Wink at the mirror, grab your bag, out the door in 15.",
+            "Wink at the mirror, grab your bag, out the door in 5.",
             "Did you eat breakfast? Do not lie to me. Eat something, then go.",
             "Wallet, keys, phone, charger. Check twice, Babe. I know you.",
             "Use the commute well: a podcast, a revision note, or thinking about me.",
@@ -150,7 +150,7 @@ $reminders = @{
             "Win this one and dinner is on me.",
             "Long for big numbers, Babe. Do not let overflow steal your marks.",
             "Stuck on one problem? Move on and come back. Do not marry a single question.",
-            "Thirty minutes to go. Eat something light and stop scrolling."
+            "Five minutes to go. Close every other tab and stop scrolling."
         )
     }
     'mock' = @{

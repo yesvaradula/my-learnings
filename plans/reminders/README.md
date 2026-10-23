@@ -27,17 +27,19 @@ powershell -NoProfile -ExecutionPolicy Bypass -File plans\reminders\popup.ps1 -K
 
 ## Schedule (IST)
 
+Every popup fires 5 minutes before its event.
+
 | Task | Kind | When |
 |------|------|------|
-| Scaler class | `scaler` | 6:45 am Mon / Wed / Fri |
-| Coding Ninjas class | `ninjas` | 10:45 am Sat / Sun |
-| Binary Cloud class | `cloud` | 9:15 pm Mon-Fri |
-| Leave for office | `leave-office` | 9:15 am Wed / Thu |
+| Scaler class | `scaler` | 6:55 am Mon / Wed / Fri |
+| Coding Ninjas class | `ninjas` | 10:55 am Sat / Sun |
+| Binary Cloud class | `cloud` | 9:25 pm Mon-Fri |
+| Leave for office | `leave-office` | 9:25 am Wed / Thu |
 | Keka login (WFH) | `keka-login-wfh` | 10:55 am Mon / Tue / Fri |
-| Keka logout (WFH) | `keka-logout-wfh` | 8:00 pm Mon / Tue / Fri |
+| Keka logout (WFH) | `keka-logout-wfh` | 7:55 pm Mon / Tue / Fri |
 | Standup call | `standup` | 8:25 pm Mon-Fri |
-| Scaler Contest 2 | `contest` | once, Tue Oct 27 2026, 9:30 am |
-| Scaler Mock Interview | `mock` | once, Wed Oct 28 2026, 10:30 pm |
+| Scaler Contest 2 | `contest` | once, Tue Oct 27 2026, 9:55 am |
+| Scaler Mock Interview | `mock` | once, Wed Oct 28 2026, 10:55 pm |
 
 ## Adding or changing a reminder
 
