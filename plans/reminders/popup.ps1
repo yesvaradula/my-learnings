@@ -155,7 +155,7 @@ $reminders = @{
     }
     'projector' = @{
         Title = 'Work reminder'
-        Fact  = "Friday: enter this week's hours in Projector before you log out of Keka."
+        Fact  = "Standup done. Enter this week's hours in Projector before Binary Cloud at 9:30."
         Lines = @(
             "Five days of brilliant work, Babe. Make sure Projector knows about every hour of it.",
             "Hours in, weekend on. That is the deal, handsome.",

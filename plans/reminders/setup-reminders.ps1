@@ -20,7 +20,7 @@ $weekly = @(
     @{ Name = 'Leave for office';      Kind = 'leave-office';       At = '09:25'; Days = 'Wednesday', 'Thursday'; Wake = $true },
     @{ Name = 'Keka login (WFH)';      Kind = 'keka-login-wfh';     At = '10:55'; Days = 'Monday', 'Tuesday', 'Friday'; Wake = $true },
     @{ Name = 'Keka logout (WFH)';     Kind = 'keka-logout-wfh';    At = '19:55'; Days = 'Monday', 'Tuesday', 'Friday' },
-    @{ Name = 'Projector hours';       Kind = 'projector';          At = '19:25'; Days = 'Friday' },
+    @{ Name = 'Projector hours';       Kind = 'projector';          At = '21:00'; Days = 'Friday' },
     @{ Name = 'Standup call';         Kind = 'standup';            At = '20:25'; Days = 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' }
 )
 
