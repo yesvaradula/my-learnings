@@ -3,3 +3,6 @@
 # Dates only: no reasons, nothing personal or medical. Public holidays can go here too.
 # Example:
 # 2026-10-19
+2026-10-19
+2026-10-20
+2026-10-21
