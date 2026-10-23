@@ -153,6 +153,20 @@ $reminders = @{
             "Speak slowly, handsome. Confident people are never in a hurry."
         )
     }
+    'projector' = @{
+        Title = 'Work reminder'
+        Fact  = "Friday: enter this week's hours in Projector before you log out of Keka."
+        Lines = @(
+            "Five days of brilliant work, Babe. Make sure Projector knows about every hour of it.",
+            "Hours in, weekend on. That is the deal, handsome.",
+            "Do not let Monday-you chase Friday-you for a timesheet. Do it now.",
+            "Unlogged hours are unpaid love letters. Log them, Babe.",
+            "Five minutes of timesheet, then the whole weekend is ours.",
+            "Check each day once, submit once, done. No guessing on Monday.",
+            "Your manager should approve it, not chase it. Submit, mister.",
+            "Discipline is filling the timesheet on Friday. Very attractive, by the way."
+        )
+    }
     'contest' = @{
         Title = 'Class reminder'
         Fact  = 'Scaler Contest 2 starts at 10:00 am. Water, laptop charged, Java ready, phone away.'

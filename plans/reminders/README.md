@@ -37,6 +37,7 @@ Every popup fires 5 minutes before its event.
 | Leave for office | `leave-office` | 9:25 am Wed / Thu |
 | Keka login (WFH) | `keka-login-wfh` | 10:55 am Mon / Tue / Fri |
 | Keka logout (WFH) | `keka-logout-wfh` | 7:55 pm Mon / Tue / Fri |
+| Projector hours (enter the week's hours) | `projector` | 7:25 pm Fri, before the Keka logout |
 | Standup call | `standup` | 8:25 pm Mon-Fri |
 | Scaler Contest 2 | `contest` | once, Tue Oct 27 2026, 9:55 am |
 | Scaler Mock Interview | `mock` | once, Wed Oct 28 2026, 10:55 pm |
